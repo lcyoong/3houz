@@ -36,7 +36,7 @@ class User extends Authenticatable
 
     public function owns($related, $field = 'user_id')
     {
-        return $this->id === $related->$field;
+        return $this->id == $related->$field;
     }
 
     // public function roles()
