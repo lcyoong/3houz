@@ -12,33 +12,40 @@ class Picture extends Model
 {
     protected $table = 'picture';
     protected $primaryKey = 'pic_id';
-	protected $fillable = ['pic_proprietor', 'pic_path', 'pic_thumbnail_path', 'pic_description', 'pic_created_by'];
+    protected $fillable = ['pic_proprietor', 'pic_path', 'pic_thumbnail_path', 'pic_description', 'pic_created_by'];
 
-	protected $baseDir = 'property/pictures/';
+    protected $baseDir = 'property/pictures/';
 
-	public static function named($name)
-	{
-		return (new static)->saveAs($name);
-	}
+    public static function named($name)
+    {
+        return (new static)->saveAs($name);
+    }
 
-	protected function saveAs($name)
-	{
-		$this->pic_path = sprintf('%s-%s', time(), $name);
-		$this->pic_thumbnail_path = sprintf('tn-%s', $this->pic_path);
-		return $this;
-	}
+    protected function saveAs($name)
+    {
+        $this->pic_path = sprintf('%s-%s', time(), $name);
+        $this->pic_thumbnail_path = sprintf('tn-%s', $this->pic_path);
+        return $this;
+    }
 
-	public function move(UploadedFile $file)
-	{
-		Storage::disk('local')->put($this->baseDir . $this->pic_path, File::get($file));
+    public function move(UploadedFile $file)
+    {
+        Storage::disk('local')->put($this->baseDir . $this->pic_path, File::get($file));
 
-		$this->makeThumbnail();
+        $img = Image::make(storage_path('app/'.$this->baseDir . $this->pic_path));
 
-		return $this;
-	}
+        $img->resize(848, null, function ($constraint) {
+            $constraint->aspectRatio();
+            $constraint->upsize();
+        })->save(storage_path('app/'.$this->baseDir . $this->pic_path));
 
-	protected function makeThumbnail()
-	{
-		  Image::make(storage_path('app/'.$this->baseDir . $this->pic_path))->fit(800, 600)->save(storage_path('app/'.$this->baseDir . $this->pic_thumbnail_path));
-	}
+        $this->makeThumbnail();
+
+        return $this;
+    }
+
+    protected function makeThumbnail()
+    {
+        Image::make(storage_path('app/'.$this->baseDir . $this->pic_path))->fit(800, 600)->save(storage_path('app/'.$this->baseDir . $this->pic_thumbnail_path));
+    }
 }
