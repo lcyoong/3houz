@@ -1,0 +1,35 @@
+<?php
+
+namespace App\Http\Requests;
+
+use App\Http\Requests\Request;
+
+class EditProperty extends Request
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+            'prop_label' => 'required|max:255',
+            'prop_name' => 'required|max:255',
+            'prop_no_bedrooms' => 'required|integer|min:1',
+            'prop_no_bathrooms' => 'required|integer|min:1',
+            'prop_built_up' => 'required|integer|min:1',
+            'prop_price' => 'required|integer|min:1',
+        ];
+    }
+}
