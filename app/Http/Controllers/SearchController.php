@@ -50,7 +50,7 @@ class SearchController extends BaseController
             Session::put('search_cache', $request->all());
         }
 
-        $search_cache = Session::get('search_cache');
+        $search_cache = Session::get('search_cache', []);
 
         $sort_by = session()->get('sort_search');
 
