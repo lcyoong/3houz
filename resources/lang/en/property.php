@@ -16,7 +16,7 @@ return [
 
     'prop_id'                => 'Id',
     'prop_label'            => 'Label',
-    'prop_name'                => 'Name',
+    'prop_name'                => 'Property Name',
     'prop_location'            => 'Location',
     'prop_price'            => 'Price',
     'prop_owner'            => 'Owner',
@@ -27,4 +27,5 @@ return [
     'prop_tenure'             => 'Tenure',
     'prop_furnishing'            => 'Furnishing',
     'prop_type'                  => 'Type',
+    'prop_state'                => 'State',
 ];

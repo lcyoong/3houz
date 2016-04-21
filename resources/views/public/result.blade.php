@@ -17,6 +17,16 @@
       <div class="ct-sortingBar ct-u-paddingRight10 ct-u-paddingLeft10 ct-u-marginBottom30">
           <div class="ct-sortingTitle pull-left">
               <h4 class="text-uppercase">{{ trans('general.title_search_result') }} <span>({{ $result->total() }})</span></h4>
+              <aside class="sorting">
+                  <span>Sorting</span>
+                  <div class="form-group">
+                    {!! Form::open(['url'=>url('sort-search'), 'method'=>'post', 'id'=>'sort-form']) !!}
+                    {!! Form::select('sort_search', $dd_sort, $sort_search, ['class'=>'form-control sort_search', 'goto'=>url('sort-search')]); !!}
+                    {!! Form::close() !!}
+                  </div>
+                  <!-- /.form-group -->
+              </aside>
+
           </div>
           <ul class="ct-showPages list-inline list-unstyled pull-right ct-u-paddingBoth15">
               <li class="ct-showElements is-active" id="ct-js-showTiles">
@@ -50,8 +60,9 @@
                         </div>
                         <div class="ct-main-text">
                             <div class="ct-product--tilte">
-                                {{ $result_item->prop_name }}
+                                {{ $result_item->prj_name }}
                             </div>
+                            {{ $result_item->prop_location }}
                             <div class="ct-product--price">
                                 <span>${{ number_format($result_item->prop_price) }}</span>
                             </div>
@@ -98,4 +109,38 @@
     </div>
   </div>
 </div>
+@endsection
+@section('js')
+<script>
+$(document).ready(function () {
+  $('body').on('change', '.sort_search', function (event) {
+      event.preventDefault();
+      // var ref = true;
+      // var goto = $(this).attr('goto');
+      $.ajax({
+          url : $(this).attr('goto'),
+          type: 'POST',
+          dataType: 'json',
+          data: $('#sort-form').serialize(),
+          // headers: { 'csrftoken' : $('input[name="_token"]').val() },
+          // header: {'X-CSRF-Token': $('input[name="_token"]').val()},
+          success: function (data) {
+              $('#smallModal').modal('show');
+              $('#smallModal').find('.modal-title').html(data.title);
+              $('#smallModal').find('.modal-body').html(data.message);
+              setTimeout(function () {
+                location.reload();
+              }, 2000);
+          },
+          error: function(data){
+              $('#smallModal').modal('show');
+              $('#smallModal').find('.modal-title').html(data.responseJSON.title);
+              $('#smallModal').find('.modal-body').html(data.responseJSON.message);
+          }
+      });
+
+      return false;
+  });
+});
+</script>
 @endsection

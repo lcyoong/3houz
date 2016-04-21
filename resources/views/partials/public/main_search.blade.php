@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col-md-6">
     <div class="form-group">
-        {{ Form::select('search_location', $postcode, '', ['class'=>'select2 form-control']) }}
+        {{ Form::text('search_location', '', ['class'=>'form-control ajax_location']) }}
     </div>
   </div>
   <div class="col-md-2">

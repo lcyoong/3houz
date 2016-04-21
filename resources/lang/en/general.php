@@ -32,11 +32,12 @@ return [
 	'title_search_result'						=> 'Search Results',
 	'title_search_sidebar'					=> 'Search Property',
 	'contact_owner'									=> 'Contact Owner',
-	'hero_tagline'									=> 'Where Owners Meet Buyers',
+	'hero_tagline'									=> 'Home Owners Meet Buyers.',
 	'select_any'										=> 'Any',
 	'total'													=> 'Total',
 	'pictures'											=> 'Pictures',
 	'go_back_text'									=> 'Go Back',
+	'back_to_result'								=> 'Back to Results',
 
 	'message_delete_confirm'				=>	'Are you sure you want to delete?',
 

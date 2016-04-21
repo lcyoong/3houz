@@ -15,7 +15,7 @@ class CreatePropertiesTable extends Migration
         Schema::create('properties', function (Blueprint $table) {
             $table->increments('prop_id');
             $table->string('prop_label');
-            $table->string('prop_name');
+            $table->integer('prop_name')->unsigned();
             $table->string('prop_location');
             $table->string('prop_tenure');
             $table->integer('prop_type')->unsigned()->nullable();
@@ -29,6 +29,7 @@ class CreatePropertiesTable extends Migration
             $table->integer('prop_price')->unsigned()->nullable();
             $table->integer('prop_owner')->unsigned();
             $table->string('prop_reference')->nullable();
+            $table->char('prop_state', 3);
             $table->integer('prop_created_by')->unsigned();
             $table->timestamps();
 
@@ -38,6 +39,8 @@ class CreatePropertiesTable extends Migration
                 ->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('prop_created_by')->references('id')->on('users')
                 ->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('prop_state')->references('state_code')->on('states')
+                ->onUpdate('cascade');
         });
     }
 

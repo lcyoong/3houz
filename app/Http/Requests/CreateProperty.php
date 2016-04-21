@@ -24,8 +24,13 @@ class CreateProperty extends Request
     public function rules()
     {
         return [
-            'prop_label' => 'required|max:255',
-            'prop_name' => 'required|max:255',
+            // 'prop_label' => 'required|max:255',
+            'prop_name' => 'required|exists:projects,prj_id',
+            'prop_type' => 'required',
+            'prop_tenure' => 'required',
+            'prop_tenure' => 'required',
+            'prop_furnishing' => 'required',
+            'prop_location' => 'required',
             'prop_no_bedrooms' => 'required|integer|min:1',
             'prop_no_bathrooms' => 'required|integer|min:1',
             'prop_built_up' => 'required|integer|min:1',

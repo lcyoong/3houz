@@ -10,20 +10,24 @@
               		{{ Form::hidden('prop_id', $prop->prop_id) }}
 
 					<div class="form-group">
-	                	{{ Form::label('prop_label', trans('property.prop_label'), ['class'=>'col-md-4 control-label']) }}
-	                	<div class="col-md-8">
-	                		{{ Form::text('prop_label', $prop->prop_label, ['class'=>'form-control']) }}
-	                		{{ FormError::block($errors, 'prop_label') }}
-	                	</div>
-                  	</div>
-
-					<div class="form-group">
                     	{{ Form::label('prop_name', trans('property.prop_name'), ['class'=>'col-md-4 control-label']) }}
                     	<div class="col-md-8">
-                    		{{ Form::text('prop_name', $prop->prop_name, ['class'=>'form-control']) }}
+                        <div class="input-group">
+                    		    {{ Form::text('prop_name_text', $prop->project->prj_name, ['class'=>'form-control', 'id'=>'prop_name_text']) }}
+                            <span class="input-group-addon"><div id="name_succcess"></div></span>
+                        </div>
+                        {{ Form::hidden('prop_name', $prop->prop_name, ['id'=>'prop_name']) }}
                     		{{ FormError::block($errors, 'prop_name') }}
                     	</div>
                   	</div>
+
+                    <div class="form-group">
+          						{{ Form::label('prop_location', trans('property.prop_location'), ['class'=>'col-md-4 control-label']) }}
+          						<div class="col-md-8">
+          							{{ Form::text('prop_location', $prop->prop_location, ['class'=>'form-control', 'readonly']) }}
+          							{{ FormError::block($errors, 'prop_location') }}
+          						</div>
+          					</div>
 
                     <div class="form-group">
           						{{ Form::label('prop_type', trans('property.prop_type'), ['class'=>'col-md-4 control-label']) }}
@@ -48,14 +52,6 @@
           							{{ FormError::block($errors, 'prop_furnishing') }}
           						</div>
           					</div>
-
-          <div class="form-group">
-						{{ Form::label('prop_location', trans('property.prop_location'), ['class'=>'col-md-4 control-label']) }}
-						<div class="col-md-8">
-							{{ Form::select('prop_location', $postcode, $prop->prop_location, ['class'=>'form-control select2', 'placeholder'=>'']) }}
-							{{ FormError::block($errors, 'prop_name') }}
-						</div>
-					</div>
 
 					<div class="form-group">
                     	{{ Form::label('prop_no_bedrooms', trans('property.prop_no_bedrooms'), ['class'=>'col-md-4 control-label']) }}
@@ -131,4 +127,58 @@
         </div>
       </div>
   </div>
+@endsection
+
+@section('js')
+<script>
+$(document).ready(function() {
+
+  nameIndicator();
+
+  $('body').on('change', '#prop_name_text', function (event) {
+      $("#name_succcess").html('<i class="fa fa-times"></i>');
+      $("#prop_name").val('');
+  });
+
+	$( "#prop_name_text" ).autocomplete({
+		minLength: 3,
+	  source: function(request, response) {
+	      $.ajax({
+	          url: "{{ url('ajax/get_projects') }}",
+	          data: { term: $("#prop_name_text").val(), _token: "{{ csrf_token() }}"},
+	          dataType: "json",
+	          type: "POST",
+	          success: function(data) {
+	              response($.map(data, function(obj) {
+	                  return {
+	                      label: obj.prj_name,
+	                      value: obj.prj_name,
+	                      description: obj.prj_name,
+												id: obj.prj_id,
+												state: obj.prj_state,
+												location: obj.prj_location,
+	                  };
+	              }));
+	          }
+
+	      });
+	  },
+		select: function( event, ui ) {
+			$("#prop_name").val(ui.item.id);
+			$("#prop_location").val(ui.item.location);
+			$("#prop_state").val(ui.item.state);
+      $("#name_succcess").html('<i class="fa fa-check"></i>');
+			},
+	})
+});
+
+function nameIndicator()
+{
+  if ($("#prop_name").val() != '') {
+    $("#name_succcess").html('<i class="fa fa-check"></i>');
+  } else {
+    $("#name_succcess").html('<i class="fa fa-times"></i>');
+  }
+}
+</script>
 @endsection

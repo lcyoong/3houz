@@ -1,5 +1,22 @@
 <nav class="ct-menuMobile">
     <ul class="ct-menuMobile-navbar">
+      @if(Auth::guest())
+        <li><a href="{{ url('/login') }}"><i class="fa fa-user"></i> Login</a></li>
+        <li><a href="{{ url('/register') }}"><i class="fa fa-plus-square"></i> Register</a></li>
+      @else
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                {{ Auth::user()->name }} <span class="caret"></span>
+            </a>
+
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="{{ url('/user/edit') }}"><i class="fa fa-btn fa-user"></i> @lang('menu.edit_profile')</a></li>
+                <li><a href="{{ url('/password/edit') }}"><i class="fa fa-btn fa-unlock"></i> @lang('menu.change_password')</a></li>
+                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i> Logout</a></li>
+            </ul>
+        </li>
+        <li><a href="{{ url('/property') }}"><i class="fa fa-home"></i> My Properties</a></li>
+      @endif
       <li class="dropdown"><a href="{{ url('/') }}">{{ trans('general.menu_properties') }}</a></li>
       <li class="dropdown"><a href="{{ url('/faq') }}">{{ trans('general.menu_faqs') }}</a></li>
       <li class="dropdown"><a href="{{ url('/contact') }}">{{ trans('general.menu_contact') }}</a></li>

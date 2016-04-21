@@ -36,14 +36,8 @@
           </div>
           <div class="detail-row">
             <div class="row">
-              <div class="col-md-6">@lang('property.prop_label')</div>
-              <div class="col-md-6 text-right">{{ $prop->prop_label }}</div>
-            </div>
-          </div>
-          <div class="detail-row">
-            <div class="row">
               <div class="col-md-6">@lang('property.prop_name')</div>
-              <div class="col-md-6 text-right">{{ $prop->prop_name }}</div>
+              <div class="col-md-6 text-right">{{ $prop->project->prj_name }}</div>
             </div>
           </div>
           <div class="detail-row">

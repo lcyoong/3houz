@@ -24,7 +24,9 @@ class Picture extends Model
     protected function saveAs($name)
     {
         $this->pic_path = sprintf('%s-%s', time(), $name);
+
         $this->pic_thumbnail_path = sprintf('tn-%s', $this->pic_path);
+
         return $this;
     }
 
@@ -34,10 +36,25 @@ class Picture extends Model
 
         $img = Image::make(storage_path('app/'.$this->baseDir . $this->pic_path));
 
-        $img->resize(848, null, function ($constraint) {
-            $constraint->aspectRatio();
-            $constraint->upsize();
-        })->save(storage_path('app/'.$this->baseDir . $this->pic_path));
+        if ($img->height() > 430) {
+          $img->heighten(430);
+        }
+
+        $img->resizeCanvas(848, 430, 'center', false, '000000');
+        // $img->fit(848, 430, function ($constraint) {
+        //     $constraint->upsize();
+        // });
+
+        $watermark = Image::make(asset('img/watermark.png'));
+
+        $img->insert($watermark, 'bottom-right', 20, 20);
+
+        $img->save(storage_path('app/'.$this->baseDir . $this->pic_path));
+
+        // $img->resize(848, null, function ($constraint) {
+        //     $constraint->aspectRatio();
+        //     $constraint->upsize();
+        // })->save(storage_path('app/'.$this->baseDir . $this->pic_path));
 
         $this->makeThumbnail();
 

@@ -32,8 +32,11 @@ Route::model('property_picture', 'App\Picture');
 Route::group(['middleware' => ['web']], function () {
     //
     Route::get('/', 'SearchController@index');
+    Route::get('/faq', 'PageController@faq');
+    Route::get('/contact', 'PageController@contact');
     Route::post('/search', 'SearchController@search');
     Route::get('/search', 'SearchController@search');
+    Route::post('sort-search', 'SearchController@sortSearch');
     Route::get('/property_detail/{property}', 'SearchController@propertyDetail');
 });
 
@@ -42,6 +45,10 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/login/{provider}', 'Auth\AuthController@getSocialAuth');
     Route::get('/login/callback/{provider}', 'Auth\AuthController@getSocialAuthCallback');
+    Route::get('/is_favourite/{property}', 'PropertyFavouriteController@isFavourite');
+    Route::post('/ajax/get_projects', 'ProjectController@autoCompleteProject');
+    Route::post('/ajax/get_locations', 'ProjectController@autoCompleteLocations');
+
 
     Route::group(['middleware' => 'auth'], function () {
 
@@ -60,8 +67,8 @@ Route::group(['middleware' => 'web'], function () {
             Route::get('/user/{user}/edit', 'UserController@edit');
         });
 
-        Route::get('/property', 'PropertyController@index');
-        Route::get('/myproperty', 'PropertyController@listOwn');
+        Route::get('/property', 'PropertyController@listOwn');
+        Route::get('/property/all', 'PropertyController@index');
         Route::post('/property/search', 'PropertyController@search');
         Route::get('/property/create', 'PropertyController@create');
         Route::post('/property/create', 'PropertyController@store');
@@ -69,12 +76,17 @@ Route::group(['middleware' => 'web'], function () {
         Route::post('/property/edit', 'PropertyController@update');
         Route::get('/property/{property}/delete', 'PropertyController@delete');
         Route::post('/property/delete', 'PropertyController@destroy');
+        Route::get('/property/{property}/preview', 'SearchController@propertyDetail');
 
         Route::get('/property/{property}/images', 'PropertyPictureController@create');
         Route::post('/property/pictures', 'PropertyPictureController@store');
         Route::get('/property/pictures/{property_picture}/edit', 'PropertyPictureController@edit');
         Route::post('/property/pictures/edit', 'PropertyPictureController@update');
         Route::post('/property/pictures/{property_picture}/delete', 'PropertyPictureController@destroy');
+
+        Route::get('/favourites', 'PropertyFavouriteController@listOwn');
+        Route::post('/property/{property}/add_to_fav', 'PropertyFavouriteController@store');
+        Route::post('/property/{property}/remove_fav', 'PropertyFavouriteController@destroy');
 
 
     });

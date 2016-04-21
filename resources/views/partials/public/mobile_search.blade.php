@@ -17,64 +17,29 @@
         <div class="ct-u-displayTableVertical ct-u-marginBottom20">
             <div class="ct-u-displayTableCell">
                 <div class="ct-form--item">
-                    <label>Property id</label>
-                    <input type="text" required class="form-control input-lg" placeholder="Any">
+                    <label>{{ trans('property.prop_location') }}</label>
+                    {{ Form::text('search_location', array_get($search_cache, 'search_location'), ['class'=>'form-control mobile_ajax_location']) }}
+                    <!-- {{ Form::select('search_location', $postcode, array_get($search_cache, 'search_location'), ['class' => 'select2 ct-select-lg']) }} -->
                 </div>
             </div>
             <div class="ct-u-displayTableCell">
                 <div class="ct-form--item">
-                    <label>Location</label>
-                    <select class="ct-js-select ct-select-lg">
-                        <option value="any">Any</option>
-                        <option value="1">New York</option>
-                        <option value="2">New Jersey</option>
-                        <option value="3">Newark</option>
-                        <option value="4">Philadelphia</option>
-                    </select>
+                  <label>{{ trans('property.prop_type') }}</label>
+                  {{ Form::select('search_type', $type, array_get($search_cache, 'search_type'), ['class' => 'select2 ct-select-lg']) }}
                 </div>
             </div>
-            <div class="ct-u-displayTableCell">
-                <div class="ct-form--item">
-                    <label>Property type </label>
-                    <select class="ct-js-select ct-select-lg">
-                        <option value="any">Any</option>
-                        <option value="1">Houses</option>
-                        <option value="2">Industrial</option>
-                        <option value="3">Retail</option>
-                        <option value="4">Apartments</option>
-                    </select>
-                </div>
+            <div class="ct-form--item ct-u-marginBoth10">
+                <label>{{ trans('general.search_price_from') }}</label>
+                {{ Form::text('search_price_from', array_get($search_cache, 'search_price_from'), ['class'=>'form-control input-lg']) }}
+            </div>
+            <div class="ct-form--item ct-u-marginBoth10">
+                <label>{{ trans('general.search_price_to') }}</label>
+                {{ Form::text('search_price_to', array_get($search_cache, 'search_price_to'), ['class'=>'form-control input-lg']) }}
             </div>
         </div>
         <div class="ct-u-displayTableVertical ct-slider--row">
             <div class="ct-u-displayTableCell">
-                <div class="ct-form--item">
-                    <label>Bedrooms</label>
-                    <select class="ct-js-select ct-select-lg">
-                        <option value="any">Any</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3+</option>
-                    </select>
-                </div>
-            </div>
-            <div class="ct-u-displayTableCell">
-                <div class="ct-form--item">
-                    <label>Bathrooms</label>
-                    <select class="ct-js-select ct-select-lg">
-                        <option value="any">Any</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3+</option>
-                    </select>
-                </div>
-            </div>
-            <div class="ct-u-displayTableCell">
-                <input type="text" class="slider ct-js-sliderTicks" value="" data-slider-handle="square" data-slider-min="0" data-slider-max="200" data-slider-step="20" data-slider-value="[60,120]"/>
-                <label class="text-center center-block">Area (m2)</label>
-            </div>
-            <div class="ct-u-displayTableCell">
-                <button type="submit" class="btn btn-warning text-capitalize pull-right">search now</button>
+                <button type="submit" class="btn btn-warning ct-u-marginTop10">{{ trans('general.button_search') }}</button>
             </div>
         </div>
     </div>

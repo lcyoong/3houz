@@ -31,16 +31,12 @@
                     <div class="row">
                         <div class="ct-links">
                             <div class="col-md-6">
-                                <a class="text-capitalize" href="#">List Property</a>
-                                <a class="text-capitalize" href="#">Home</a>
-                                <a class="text-capitalize" href="#">Login</a>
-                                <a class="text-capitalize" href="#">Register</a>
+                              <a class="text-capitalize" href="{{ url('/') }}">Home</a>
+                              <a class="text-capitalize" href="{{ url('contact') }}">Contact Us</a>
                             </div>
                             <div class="col-md-6">
-                                <a class="text-capitalize" href="#">Login</a>
-                                <a class="text-capitalize" href="#">Register</a>
-                                <a class="text-capitalize" href="#">Login</a>
-                                <a class="text-capitalize" href="#">Register</a>
+                              <a class="text-capitalize" href="{{ url('login') }}">Login</a>
+                              <a class="text-capitalize" href="{{ url('register') }}">Register</a>
                             </div>
                         </div>
                     </div>

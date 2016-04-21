@@ -6,7 +6,7 @@
 			<thead>
 				<tr>
 					<th>{{ trans('property.prop_id') }}</th>
-					<th>{{ trans('property.prop_label') }}</th>
+					<th>{{ trans('property.prop_name') }}</th>
 					<th>{{ trans('property.prop_location') }}</th>
 					<th>{{ trans('property.prop_price') }}</th>
 					<th>{{ trans('property.prop_owner') }}</th>
@@ -17,15 +17,15 @@
 			@foreach ($props as $prop)
 			<tr>
 				<td>{{ $prop->prop_id }}</td>
-				<td>{{ $prop->prop_label }}</td>
+				<td>{{ $prop->prj_name }}</td>
 				<td>{{ $prop->prop_location }}</td>
-				<td>{{ $prop->prop_price }}</td>
+				<td>{{ number_format($prop->prop_price) }}</td>
 				<td>{{ $prop->name }}</td>
 				<td>
 					<a href="{{ url('property/'.$prop->prop_id.'/edit') }}"><i class="fa fa-edit"></i></a>
 					<a href="{{ url('property/'.$prop->prop_id.'/images') }}"><i class="fa fa-image"></i></a>
 					<a href="{{ url('property/'.$prop->prop_id.'/delete') }}" class="btn-modal"><i class="fa fa-trash"></i></a>
-					<a href="{{ url('property/'.$prop->prop_id.'/preview') }}"><i class="fa fa-eye"></i></a>
+					<a href="{{ url('property/'.$prop->prop_id.'/preview') }}" target=_blank><i class="fa fa-eye"></i></a>
 				</td>
 			</tr>
 			@endforeach

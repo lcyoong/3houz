@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Traits\ControllerTrait;
 use App\Property;
 use App\Postcode;
+use App\State;
 use App\General;
 use App\PropertyType;
 use App\Http\Requests\CreateProperty;
@@ -40,7 +41,7 @@ class PropertyController extends Controller
 
     public function listOwn(Request $request)
     {
-        $props = $this->listing($request->user()->id);
+        $props = $this->listing(auth()->user()->id);
 
         $page_title = trans('property.title_my_listing');
 
@@ -51,7 +52,9 @@ class PropertyController extends Controller
     {
         return $this->propertyRepo->filterOwner($owner)
 																	->joinMember()
+                                  ->joinProject()
 																	->filter(session()->get('src_prop', []))
+                                  ->orderBy('prop_id', 'desc')
 																	->getPaginated();
     }
 
@@ -61,7 +64,9 @@ class PropertyController extends Controller
 
         $go_back = 'property';
 
-        $postcode = Postcode::groupBy('post_office')->toDropDown('post_office', 'post_office');
+        $state = State::active()->toDropDown('state_code', 'state_name');
+
+        // $postcode = Postcode::groupBy('post_office')->toDropDown('post_office', 'post_office');
 
         $tenure = $this->general->outputDropDown('prop_tenure');
 
@@ -69,14 +74,16 @@ class PropertyController extends Controller
 
         $type = PropertyType::where('prty_status', '=', 'active')->toDropDown('prty_id', 'prty_description');
 
-        return view('property.create', compact('page_title', 'go_back', 'postcode', 'tenure', 'furnish', 'type') + $this->parm);
+        return view('property.create', compact('page_title', 'go_back', 'state', 'tenure', 'furnish', 'type') + $this->parm);
     }
 
     public function store(CreateProperty $request)
     {
         $input = $request->all();
 
-        $user = $this->propertyRepo->create($input);
+        // dd($input);
+
+        $this->propertyRepo->create($input);
 
         return redirect('property')->with('status', trans('common.store_successful'));
     }

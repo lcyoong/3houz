@@ -25,19 +25,20 @@
                             </div> -->
                             <div class="ct-form--item ct-u-marginBottom10">
                                 <label>{{ trans('property.prop_location') }}</label>
-                                {{ Form::select('search_location', $postcode, '', ['class' => 'select2 ct-select-lg']) }}
+                                {{ Form::text('search_location', array_get($search_cache, 'search_location'), ['class'=>'form-control ajax_location']) }}
+                                <!-- {{ Form::select('search_location', $postcode, array_get($search_cache, 'search_location'), ['class' => 'select2 ct-select-lg']) }} -->
                             </div>
                             <div class="ct-form--item ct-u-marginBottom10">
                                 <label>{{ trans('property.prop_type') }}</label>
-                                {{ Form::select('search_type', $type, '', ['class' => 'select2 ct-select-lg']) }}
+                                {{ Form::select('search_type', $type, array_get($search_cache, 'search_type'), ['class' => 'select2 ct-select-lg']) }}
                             </div>
                             <div class="ct-form--item ct-u-marginBoth10">
                                 <label>{{ trans('general.search_price_from') }}</label>
-                                {{ Form::text('search_price_from', '', ['class'=>'form-control input-lg']) }}
+                                {{ Form::text('search_price_from', array_get($search_cache, 'search_price_from'), ['class'=>'form-control input-lg']) }}
                             </div>
                             <div class="ct-form--item ct-u-marginBoth10">
                                 <label>{{ trans('general.search_price_to') }}</label>
-                                {{ Form::text('search_price_to', '', ['class'=>'form-control input-lg']) }}
+                                {{ Form::text('search_price_to', array_get($search_cache, 'search_price_to'), ['class'=>'form-control input-lg']) }}
                             </div>
                             <!-- <div class="ct-u-displayTableCell">
                                 <input type="text" class="slider ct-js-sliderTicks" value="" data-slider-handle="square" data-slider-min="100" data-slider-max="10000" data-slider-step="10" data-slider-value="[100,10000]"/>

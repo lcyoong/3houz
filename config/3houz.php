@@ -8,4 +8,5 @@ return [
     'facebook'        => '3houz',
     'twitter'         => '3houz',
     'instagram'       => '3houz',
+    'title'           => 'Property Marketplace | Home Owners Meet Buyers, Directly | 3HOUZ',
 ];
