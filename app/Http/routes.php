@@ -38,6 +38,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/search', 'SearchController@search');
     Route::post('sort-search', 'SearchController@sortSearch');
     Route::get('/property_detail/{property}', 'SearchController@propertyDetail');
+    Route::get('/property/{property}/owner', 'SearchController@ownerDetail');
+    Route::get('login_ajax', 'Auth\AuthController@ajaxLogin');
 });
 
 Route::group(['middleware' => 'web'], function () {
@@ -87,6 +89,11 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/favourites', 'PropertyFavouriteController@listOwn');
         Route::post('/property/{property}/add_to_fav', 'PropertyFavouriteController@store');
         Route::post('/property/{property}/remove_fav', 'PropertyFavouriteController@destroy');
+        Route::post('/property/{property}/unlock', 'PropertyController@unlock');
+
+        Route::get('/property/{property}/sign_offer', 'OfferController@create');
+        Route::post('/offer/preview', 'OfferController@preview');
+        Route::post('/offer/create', 'OfferController@store');
 
 
     });

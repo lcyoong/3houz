@@ -43,7 +43,9 @@ class PropertyFavouriteController extends Controller
 
   public function isFavourite(Property $property)
   {
-      return $this->favRepo->isFavourite($property->prop_id, auth()->user()->id);
+      if (auth()->check()) {
+        return $this->favRepo->isFavourite($property->prop_id, auth()->user()->id);
+      }
   }
 
   public function listOwn(Request $request)

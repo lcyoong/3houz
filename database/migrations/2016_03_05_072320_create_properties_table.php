@@ -16,6 +16,7 @@ class CreatePropertiesTable extends Migration
             $table->increments('prop_id');
             $table->string('prop_label');
             $table->integer('prop_name')->unsigned();
+            $table->text('prop_address');
             $table->string('prop_location');
             $table->string('prop_tenure');
             $table->integer('prop_type')->unsigned()->nullable();
@@ -31,6 +32,7 @@ class CreatePropertiesTable extends Migration
             $table->string('prop_reference')->nullable();
             $table->char('prop_state', 3);
             $table->integer('prop_created_by')->unsigned();
+            $table->integer('prop_view')->unsigned()->default(0);
             $table->timestamps();
 
             // $table->foreign('prop_owner')->references('mb_id')->on('members')

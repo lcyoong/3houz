@@ -12,7 +12,9 @@ class Property extends Model
 
     protected $table = 'properties';
     protected $primaryKey = 'prop_id';
-    protected $fillable = ['prop_label', 'prop_name', 'prop_type', 'prop_tenure', 'prop_furnishing', 'prop_description', 'prop_location', 'prop_type', 'prop_no_bedrooms', 'prop_no_bathrooms', 'prop_built_up', 'prop_furnishing', 'prop_direction', 'prop_occupied', 'prop_price', 'prop_owner', 'prop_reference', 'prop_state', 'prop_created_by'];
+    protected $fillable = ['prop_label', 'prop_name', 'prop_type', 'prop_tenure', 'prop_furnishing', 'prop_description', 'prop_address',
+                            'prop_location', 'prop_type', 'prop_no_bedrooms', 'prop_no_bathrooms', 'prop_built_up', 'prop_furnishing',
+                            'prop_direction', 'prop_occupied', 'prop_price', 'prop_owner', 'prop_reference', 'prop_state', 'prop_created_by'];
 
     public function scopeJoinMember($query)
     {

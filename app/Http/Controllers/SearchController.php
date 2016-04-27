@@ -12,6 +12,7 @@ use App\Property;
 use App\Postcode;
 use App\PropertyType;
 use App\General;
+use App\PropertyUnlock;
 use DB;
 
 class SearchController extends BaseController
@@ -67,12 +68,26 @@ class SearchController extends BaseController
     {
         $pics = $property->pictures;
 
-        $owner = $property->owner;
+        // $owner = $property->owner;
 
         $property = $this->propRepo->select('properties.*')->where('prop_id', '=', $property->prop_id)->joinType()->first();
 
         $title = $property->project->prj_name . ', ' . $property->prop_location;
 
-        return view('public.property_detail', compact('property', 'pics', 'owner', 'title') + $this->parm);
+        return view('public.property_detail', compact('property', 'pics', 'title') + $this->parm);
+    }
+
+    public function ownerDetail(Property $property)
+    {
+        $unlocked = false;
+        
+        if (auth()->check()) {
+          $unlocked = PropertyUnlock::where('pul_owner', '=', auth()->user()->id)->where('pul_property', '=', $property->prop_id)->count() > 0 ? true : false;
+        }
+
+        $owner = $property->owner;
+
+        return view('public.owner_detail', compact('property', 'owner', 'unlocked') + $this->parm);
+
     }
 }

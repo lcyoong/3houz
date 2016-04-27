@@ -43,9 +43,7 @@
 <div class="ct-topBar">
     <div class="container">
         <div class="row">
-            <div class="col-sm-7 col-md-8">
-            </div>
-            <div class="col-sm-5 col-md-4">
+            <div class="col-md-12">
               <ul class="nav navbar-nav navbar-right">
                 <li><a href="{{ url('/property') }}"><i class="fa fa-home"></i> My Properties</a></li>
                 @if(Auth::guest())
@@ -71,7 +69,7 @@
 </div>
 <nav class="navbar yamm" role="navigation" data-heighttopbar="40px" data-startnavbar="0">
     <div class="container">
-        <div class="navbar-header ct-panel--navbar">
+        <div class="navbar-header">
             <a href="{{ url('/') }}">
                 <img src="{{ asset('img/logo-3houz.png') }}" alt="{{ config('3houz.brand') }}">
             </a>

@@ -11,6 +11,7 @@ use App\Postcode;
 use App\State;
 use App\General;
 use App\PropertyType;
+use App\PropertyUnlock;
 use App\Http\Requests\CreateProperty;
 use App\Http\Requests\EditProperty;
 
@@ -130,6 +131,11 @@ class PropertyController extends Controller
         $this->propertyRepo->find($input['prop_id'])->delete();
 
         return redirect()->back()->with('status', trans('common.save_successful'));
+    }
+
+    public function unlock(Property $property)
+    {
+        return PropertyUnlock::firstOrCreate(['pul_owner'=>auth()->user()->id, 'pul_property'=>$property->prop_id]);
     }
 
     // public function images(Property $prop)
