@@ -26,7 +26,8 @@ return [
 	'message_403'				=> 'Stay behind the line.',
 	'delete_successful'				=> 'Deleted succesfully.',
 
-	'message_delete_confirm'				=>	'Are you sure you want to delete?',
+	'message_delete_confirm'				=> 'Are you sure you want to delete?',
+  'message_delete_confirm_key'    => 'Are you sure you want to delete this offer key for the following buyer?',
 
 
 ];

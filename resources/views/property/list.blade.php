@@ -7,7 +7,6 @@
 				<tr>
 					<th>{{ trans('property.prop_id') }}</th>
 					<th>{{ trans('property.prop_name') }}</th>
-					<th>{{ trans('property.prop_location') }}</th>
 					<th>{{ trans('property.prop_price') }}</th>
 					<th>{{ trans('property.prop_owner') }}</th>
 					<th>{{ trans('menu.action_column') }}</th>
@@ -17,9 +16,16 @@
 			@foreach ($props as $prop)
 			<tr>
 				<td>{{ $prop->prop_id }}</td>
-				<td>{{ $prop->prj_name }}</td>
-				<td>{{ $prop->prop_location }}</td>
-				<td>{{ number_format($prop->prop_price) }}</td>
+				<td>{{ $prop->prj_name }}, {{ $prop->prop_location }}
+					<div>
+						<span class="label label-info"><i class="fa fa-eye"></i> {{ $prop->prop_view }}</span>
+						<span class="label label-info"><i class="fa fa-unlock-alt"></i> {{ $prop->unlocks->count() }}</span>
+						<span class="label label-info"><i class="fa fa-key"></i> {{ $prop->keys->count() }}</span>
+						<span class="label label-info"><i class="fa fa-file"></i> {{ $prop->offers->count() }}</span>
+						<span class="label label-success"><i class="fa fa-home"></i> {{ $prop->prop_address }}</span>
+					</div>
+				</td>
+				<td>{{ config('3houz.currency') }}{{ number_format($prop->prop_price) }}</td>
 				<td>{{ $prop->name }}</td>
 				<td>
 					<a href="{{ url('property/'.$prop->prop_id.'/edit') }}"><i class="fa fa-edit"></i></a>

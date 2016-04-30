@@ -39,4 +39,6 @@ return [
     'of_grace_period'         => "Grace period",
     'of_grace_interest_percent'   => "Interest",
     'of_property_address'     => 'Property Address',
+
+    'enter_safety_key_text'   => 'Enter the property offer key provided by owner.',
 ];

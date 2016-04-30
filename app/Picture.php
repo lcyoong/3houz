@@ -45,9 +45,9 @@ class Picture extends Model
         //     $constraint->upsize();
         // });
 
-        $watermark = Image::make(asset('img/watermark.png'));
-
-        $img->insert($watermark, 'bottom-right', 20, 20);
+        // $watermark = Image::make(asset('img/watermark.png'));
+        //
+        // $img->insert($watermark, 'bottom-right', 20, 20);
 
         $img->save(storage_path('app/'.$this->baseDir . $this->pic_path));
 

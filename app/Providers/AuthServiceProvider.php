@@ -15,6 +15,8 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         // \App\User::class => \App\Policies\UserPolicy::class,
         \App\Property::class => \App\Policies\PropertyPolicy::class,
+        \App\PropertyFavourites::class => \App\Policies\PropertyFavouritePolicy::class,
+        \App\OfferKey::class => \App\Policies\OfferKeyPolicy::class,
     ];
 
     /**

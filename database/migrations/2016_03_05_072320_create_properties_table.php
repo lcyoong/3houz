@@ -30,6 +30,7 @@ class CreatePropertiesTable extends Migration
             $table->integer('prop_price')->unsigned()->nullable();
             $table->integer('prop_owner')->unsigned();
             $table->string('prop_reference')->nullable();
+            $table->string('prop_key')->nullable();
             $table->char('prop_state', 3);
             $table->integer('prop_created_by')->unsigned();
             $table->integer('prop_view')->unsigned()->default(0);

@@ -163,3 +163,25 @@
       float: left;
   }
 }
+
+.record-info-bar{
+  font-size: 12px;
+  padding: 10px 0px;
+  margin-bottom: 20px;
+}
+
+.record-info-bar ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.record-info-bar li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.modal-confirm{
+  text-align: center;
+  margin: 100px 0px;
+}

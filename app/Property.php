@@ -14,7 +14,8 @@ class Property extends Model
     protected $primaryKey = 'prop_id';
     protected $fillable = ['prop_label', 'prop_name', 'prop_type', 'prop_tenure', 'prop_furnishing', 'prop_description', 'prop_address',
                             'prop_location', 'prop_type', 'prop_no_bedrooms', 'prop_no_bathrooms', 'prop_built_up', 'prop_furnishing',
-                            'prop_direction', 'prop_occupied', 'prop_price', 'prop_owner', 'prop_reference', 'prop_state', 'prop_created_by'];
+                            'prop_direction', 'prop_occupied', 'prop_price', 'prop_owner', 'prop_reference', 'prop_state', 'prop_created_by',
+                            'prop_key'];
 
     public function scopeJoinMember($query)
     {
@@ -85,6 +86,21 @@ class Property extends Model
         return $this->belongsTo('App\Project', 'prop_name');
     }
 
+    public function keys()
+    {
+        return $this->hasMany('App\OfferKey', 'ofk_property');
+    }
+
+    public function offers()
+    {
+        return $this->hasMany('App\Offer', 'of_property');
+    }
+
+    public function unlocks()
+    {
+        return $this->hasMany('App\PropertyUnlock', 'pul_property');
+    }
+
     public function addPicture(Picture $pic)
     {
         $this->pictures()->save($pic);
@@ -114,5 +130,11 @@ class Property extends Model
     {
         return $query->join('projects', 'prop_name', '=', 'prj_id');
     }
+
+    public function isKey($key)
+    {
+        return $this->where('prop_key', '=', $key)->count() > 0 ? true : false;
+    }
+
 
 }

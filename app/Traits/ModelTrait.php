@@ -14,7 +14,7 @@ trait ModelTrait
         $validator = Validator::make($input, $rules);
 
         if ($validator->fails()) {
-            return General::jsonBadResponse(implode("<br />", $validator->errors()->all()));
+            // return General::jsonBadResponse(implode("<br />", $validator->errors()->all()));
         } else {
             return null;
         }

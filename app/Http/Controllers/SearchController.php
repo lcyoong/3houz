@@ -68,6 +68,8 @@ class SearchController extends BaseController
     {
         $pics = $property->pictures;
 
+        $property->increment('prop_view');
+
         // $owner = $property->owner;
 
         $property = $this->propRepo->select('properties.*')->where('prop_id', '=', $property->prop_id)->joinType()->first();
@@ -80,7 +82,7 @@ class SearchController extends BaseController
     public function ownerDetail(Property $property)
     {
         $unlocked = false;
-        
+
         if (auth()->check()) {
           $unlocked = PropertyUnlock::where('pul_owner', '=', auth()->user()->id)->where('pul_property', '=', $property->prop_id)->count() > 0 ? true : false;
         }

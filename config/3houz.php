@@ -10,4 +10,5 @@ return [
     'instagram'       => '3houz',
     'title'           => 'Property Marketplace | Home Owners Meet Buyers, Directly | 3HOUZ',
     'currency'        => 'RM',
+    'bu_metric'       => 'sqf',
 ];

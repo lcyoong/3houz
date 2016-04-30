@@ -30,6 +30,7 @@ class EditProperty extends Request
             'prop_tenure' => 'required',
             'prop_tenure' => 'required',
             'prop_furnishing' => 'required',
+            'prop_key' => 'required|min:4',
             'prop_location' => 'required',
             'prop_no_bedrooms' => 'required|integer|min:1',
             'prop_no_bathrooms' => 'required|integer|min:1',

@@ -4,9 +4,9 @@
 @endsection
 
 @section('page_content')
+{{ Form::open(['url'=>url('property/create'), 'action'=>'post', 'class'=>'form-horizontal']) }}
 	<div class="row">
-		<div class="col-md-8">
-			{{ Form::open(['url'=>url('property/create'), 'action'=>'post', 'class'=>'form-horizontal']) }}
+		<div class="col-md-6">
 			@if(auth()->user()->can('create_for_users'))
 			<div class="form-group">
 				{{ Form::label('prop_owner', trans('property.prop_owner'), ['class'=>'col-md-4 control-label']) }}
@@ -31,10 +31,10 @@
 				{{ Form::label('prop_name', trans('property.prop_name'), ['class'=>'col-md-4 control-label']) }}
 				<div class="col-md-8">
 					<div class="input-group">
-						{{ Form::text('prop_name_text', '', ['class'=>'form-control', 'id'=>'prop_name_text']) }}
+						{{ Form::text('prop_name_text', '', ['class'=>'form-control', 'id'=>'prop_name_text', 'data-toggle'=>"tooltip", 'data-placement'=>"right", 'data-container'=>"body", 'title'=>trans('property.name_help_text')]) }}
 						<span class="input-group-addon"><div id="name_succcess"></div></span>
 					</div>
-					<span id="helpBlock" class="help-block">@lang('property.address_help_text')</span>
+					<!-- <span id="helpBlock" class="help-block">@lang('property.address_help_text')</span> -->
 					{{ Form::hidden('prop_name', '', ['class'=>'form-control', 'id'=>'prop_name']) }}
 					{{ FormError::block($errors, 'prop_name') }}
 				</div>
@@ -100,15 +100,22 @@
 			<div class="form-group">
 				{{ Form::label('prop_built_up', trans('property.prop_built_up'), ['class'=>'col-md-4 control-label']) }}
 				<div class="col-md-8">
-					{{ Form::text('prop_built_up', old('prop_built_up'), ['class'=>'form-control']) }}
+					<div class="input-group">
+						{{ Form::text('prop_built_up', old('prop_built_up'), ['class'=>'form-control']) }}
+						<div class="input-group-addon">{{ config('3houz.bu_metric') }}</div>
+					</div>
 					{{ FormError::block($errors, 'prop_built_up') }}
 				</div>
 			</div>
-
+		</div>
+		<div class="col-md-6">
 			<div class="form-group">
 				{{ Form::label('prop_price', trans('property.prop_price'), ['class'=>'col-md-4 control-label']) }}
 				<div class="col-md-8">
-					{{ Form::text('prop_price', old('prop_price'), ['class'=>'form-control']) }}
+					<div class="input-group">
+						<div class="input-group-addon">{{ config('3houz.currency') }}</div>
+						{{ Form::text('prop_price', old('prop_price'), ['class'=>'form-control']) }}
+					</div>
 					{{ FormError::block($errors, 'prop_price') }}
 				</div>
 			</div>
@@ -122,28 +129,41 @@
 			</div>
 
 			<div class="form-group">
-				{{ Form::label('prop_address', trans('property.prop_address'), ['class'=>'col-md-4 control-label']) }}
+				{{ Form::label('prop_key', trans('property.prop_key'), ['class'=>'col-md-4 control-label']) }}
 				<div class="col-md-8">
-					{{ Form::textarea('prop_address', old('prop_address'), ['class'=>'form-control', 'rows'=>8]) }}
-					{{ FormError::block($errors, 'prop_address') }}
-					<span id="helpBlock" class="help-block">@lang('property.address_help_text')</span>
+					<div class="input-group">
+						<div class="input-group-addon"><i class="fa fa-key"></i></div>
+						{{ Form::text('prop_key', old('prop_key'), ['class'=>'form-control', 'data-toggle'=>"tooltip", 'data-placement'=>"bottom", 'data-container'=>"body", 'title'=>trans('property.key_help_text')]) }}
+					</div>
+					{{ FormError::block($errors, 'prop_key') }}
 				</div>
 			</div>
 
+			<div class="form-group">
+				{{ Form::label('prop_address', trans('property.prop_address'), ['class'=>'col-md-4 control-label']) }}
+				<div class="col-md-8">
+					{{ Form::textarea('prop_address', old('prop_address'), ['class'=>'form-control', 'rows'=>4, 'data-toggle'=>"tooltip", 'data-placement'=>"bottom", 'data-container'=>"body", 'title'=>trans('property.address_help_text')]) }}
+					{{ FormError::block($errors, 'prop_address') }}
+					<!-- <span id="helpBlock" class="help-block">@lang('property.address_help_text')</span> -->
+				</div>
+			</div>
 			<div class="form-group">
 				<div class="col-md-8 col-md-offset-4">
 					{{ Form:: button('<i class="fa fa-btn fa-plus"></i>' . trans('common.button_submit'), ['class'=>'btn btn-primary', 'type'=>'submit']) }}
 					<!-- {{ Form:: button('<i class="fa fa-btn fa-ban"></i>' . trans('common.button_cancel'), ['class'=>'btn btn-primary cancel-button', 'goto'=> url('property') ]) }} -->
 				</div>
 			</div>
-			{{ Form::close() }}
+
 		</div>
 	</div>
+{{ Form::close() }}
 @endsection
 
 @section('js')
 <script>
 $(document).ready(function() {
+
+	$('[data-toggle="tooltip"]').tooltip();
 
 	nameIndicator();
 

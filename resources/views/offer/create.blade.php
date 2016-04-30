@@ -4,6 +4,7 @@
 @endsection
 
 @section('page_content')
+@if($key_exists)
 {{ Form::open(['url'=>url('offer/preview'), 'action'=>'post', 'class'=>'']) }}
 {{ Form::hidden('of_property', $property->prop_id) }}
 {{ Form::hidden('of_owner', $owner->id) }}
@@ -50,9 +51,10 @@
 			{{ Form::textarea('of_property_address', $property->prop_address, ['class'=>'form-control', 'rows'=>3, 'readonly']) }}
 			{{ FormError::block($errors, 'of_property_address') }}
 		</div>
+		<span class="label label-info">{{ $property->prop_built_up }} @lang('property.sqf')</span>
+		<span class="label label-info">{{ $property->prop_tenure }}</span>
 		<span class="label label-info">{{ $property->prop_no_bedrooms }} @lang('property.bedrooms')</span>
 		<span class="label label-info">{{ $property->prop_no_bathrooms }} @lang('property.bathrooms')</span>
-		<span class="label label-info">{{ $property->prop_built_up }} @lang('property.sqf')</span>
 	</div>
 	<div class="col-md-4">
 		<h4><i class="fa fa-thumbs-o-up"></i> @lang('offer.deal')</h4>
@@ -86,9 +88,26 @@
 			{{ FormError::block($errors, 'of_paid_within') }}
 		</div>
 		<div class="form-group">
-			{{ Form::button(trans('form.btn_submit'), ['type'=>'submit', 'class'=>'btn btn-primary']) }}
+			{{ Form::button(trans('form.btn_preview'), ['type'=>'submit', 'class'=>'btn btn-primary']) }}
 		</div>
 	</div>
 </div>
 {{ Form::close() }}
+@endif
+@endsection
+
+@section('js')
+<script>
+@if(!$key_exists)
+enterKey();
+@endif
+
+function enterKey() {
+	$(document).ready(function() {
+		$('#basicModal').find('.modal-content').html('');
+		$('#basicModal').modal('show');
+		$('#basicModal').find('.modal-content').load('{{ url('property/'.$property->prop_id.'/offer_key') }}');
+	});
+}
+</script>
 @endsection

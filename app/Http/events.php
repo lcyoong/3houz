@@ -18,7 +18,9 @@ Event::listen('admin.menu.build', function($menu){
 		$menu->add('property.add', trans('menu.add_property'), url('property/create'), 1);
 		$menu->add('property.list', trans('menu.list_property'), url('property'), 2);
 		$menu->add('favourite', trans('menu.property_favourites'), url('favourites'), 3);
+		$menu->add('key', trans('menu.offer_keys'), url('offer_key'), 4);
+		$menu->add('offer', trans('menu.offers'), url('offer'), 5);
 		// $menu->add('fav', 'Favourites', url('fav'), 3);
-		$menu->add('profile', trans('menu.profile'), url('user/edit'), 4);
+		$menu->add('profile', trans('menu.profile'), url('user/edit'), 6);
 	}
 });

@@ -40,6 +40,11 @@ class PropertyFavourites extends Model
       $query->join('properties', 'prop_id', '=', 'fav_property');
   }
 
+  public function scopeJoinProject($query)
+  {
+      $query->join('projects', 'prj_id', '=', 'prop_name');
+  }
+
   public function isFavourite($prop_id, $user_id)
   {
       return $this->where('fav_owner', '=', $user_id)->where('fav_property', '=', $prop_id)->first();

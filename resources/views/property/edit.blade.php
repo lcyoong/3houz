@@ -1,19 +1,25 @@
 @extends('layouts.page')
 
 @section('page_content')
+{{ Form::open(['url'=>url('property/edit'), 'action'=>'post', 'class'=>'form-horizontal']) }}
+{{ Form::hidden('prop_id', $prop->prop_id) }}
+<div class="record-info-bar">
+  <ul>
+    <li><i class="fa fa-clock-o"></i> @lang('form.created_at') {{ $prop->created_at }}</li>
+    <li><i class="fa fa-edit"></i> @lang('form.updated_at') {{ $prop->updated_at }}</li>
+  </ul>
+</div>
   <div class="row">
-      <div class="col-md-8">
-              	{{ Form::open(['url'=>url('property/edit'), 'action'=>'post', 'class'=>'form-horizontal']) }}
-              		{{ Form::hidden('prop_id', $prop->prop_id) }}
+      <div class="col-md-6">
 
 					<div class="form-group">
                     	{{ Form::label('prop_name', trans('property.prop_name'), ['class'=>'col-md-4 control-label']) }}
                     	<div class="col-md-8">
                         <div class="input-group">
-                    		    {{ Form::text('prop_name_text', $prop->project->prj_name, ['class'=>'form-control', 'id'=>'prop_name_text']) }}
+                    		    {{ Form::text('prop_name_text', $prop->project->prj_name, ['class'=>'form-control', 'id'=>'prop_name_text', 'data-toggle'=>"tooltip", 'data-placement'=>"right", 'data-container'=>"body", 'title'=>trans('property.name_help_text')]) }}
                             <span class="input-group-addon"><div id="name_succcess"></div></span>
                         </div>
-                        <span id="helpBlock" class="help-block">@lang('property.address_help_text')</span>
+                        <!-- <span id="helpBlock" class="help-block">@lang('property.address_help_text')</span> -->
                         {{ Form::hidden('prop_name', $prop->prop_name, ['id'=>'prop_name']) }}
                     		{{ FormError::block($errors, 'prop_name') }}
                     	</div>
@@ -70,73 +76,70 @@
 					<div class="form-group">
                     	{{ Form::label('prop_built_up', trans('property.prop_built_up'), ['class'=>'col-md-4 control-label']) }}
                     	<div class="col-md-8">
-                    		{{ Form::text('prop_built_up', $prop->prop_built_up, ['class'=>'form-control']) }}
+                        <div class="input-group">
+                      		{{ Form::text('prop_built_up', $prop->prop_built_up, ['class'=>'form-control']) }}
+                          <div class="input-group-addon">{{ config('3houz.bu_metric') }}</div>
+                        </div>
                     		{{ FormError::block($errors, 'prop_built_up') }}
                     	</div>
                   	</div>
 
-                      <div class="form-group">
-                      	{{ Form::label('prop_price', trans('property.prop_price'), ['class'=>'col-md-4 control-label']) }}
-                      	<div class="col-md-8">
-                      		{{ Form::text('prop_price', $prop->prop_price, ['class'=>'form-control']) }}
-                      		{{ FormError::block($errors, 'prop_price') }}
-                      	</div>
-                      </div>
-
-                      <div class="form-group">
-            						{{ Form::label('prop_description', trans('property.prop_description'), ['class'=>'col-md-4 control-label']) }}
-            						<div class="col-md-8">
-            							{{ Form::textarea('prop_description', $prop->prop_description, ['class'=>'form-control', 'rows'=>8]) }}
-            							{{ FormError::block($errors, 'prop_description') }}
-            						</div>
-            					</div>
-
-                      <div class="form-group">
-                				{{ Form::label('prop_address', trans('property.prop_address'), ['class'=>'col-md-4 control-label']) }}
-                				<div class="col-md-8">
-                					{{ Form::textarea('prop_address', $prop->prop_address, ['class'=>'form-control', 'rows'=>8]) }}
-                					{{ FormError::block($errors, 'prop_address') }}
-                					<span id="helpBlock" class="help-block">@lang('property.address_help_text')</span>
-                				</div>
-                			</div>
-
-                      <div class="form-group">
-                          <div class="col-md-8 col-md-offset-4">
-                          	{{ Form:: button('<i class="fa fa-btn fa-save"></i>' . trans('common.button_save'), ['class'=>'btn btn-primary', 'type'=>'submit']) }}
-                          </div>
-                      </div>
-                  {{ Form::close() }}
       </div>
-      <div class="col-md-4">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div class="detail-row">
-              <div class="row">
-                <div class="col-md-6">@lang('property.prop_id')</div>
-                <div class="col-md-6 text-right">{{ $prop->prop_id }}</div>
-              </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          {{ Form::label('prop_price', trans('property.prop_price'), ['class'=>'col-md-4 control-label']) }}
+          <div class="col-md-8">
+            <div class="input-group">
+              <div class="input-group-addon">{{ config('3houz.currency') }}</div>
+              {{ Form::text('prop_price', $prop->prop_price, ['class'=>'form-control']) }}
             </div>
-            <div class="detail-row">
-              <div class="row">
-                <div class="col-md-6">@lang('form.created_at')</div>
-                <div class="col-md-6 text-right">{{ $prop->created_at }}</div>
-              </div>
-            </div>
-            <div class="detail-row detail-row-last">
-              <div class="row">
-                <div class="col-md-6">@lang('form.updated_at')</div>
-                <div class="col-md-6 text-right">{{ $prop->updated_at }}</div>
-              </div>
-            </div>
+            {{ FormError::block($errors, 'prop_price') }}
           </div>
+        </div>
+
+        <div class="form-group">
+          {{ Form::label('prop_description', trans('property.prop_description'), ['class'=>'col-md-4 control-label']) }}
+          <div class="col-md-8">
+            {{ Form::textarea('prop_description', $prop->prop_description, ['class'=>'form-control', 'rows'=>8]) }}
+            {{ FormError::block($errors, 'prop_description') }}
+          </div>
+        </div>
+
+        <div class="form-group">
+  				{{ Form::label('prop_key', trans('property.prop_key'), ['class'=>'col-md-4 control-label']) }}
+  				<div class="col-md-8">
+  					<div class="input-group">
+  						<div class="input-group-addon"><i class="fa fa-key"></i></div>
+  						{{ Form::text('prop_key', $prop->prop_key, ['class'=>'form-control', 'data-toggle'=>"tooltip", 'data-placement'=>"bottom", 'data-container'=>"body", 'title'=>trans('property.key_help_text')]) }}
+  					</div>
+  					{{ FormError::block($errors, 'prop_key') }}
+  				</div>
+  			</div>
+
+        <div class="form-group">
+          {{ Form::label('prop_address', trans('property.prop_address'), ['class'=>'col-md-4 control-label']) }}
+          <div class="col-md-8">
+            {{ Form::textarea('prop_address', $prop->prop_address, ['class'=>'form-control', 'rows'=>4, 'data-toggle'=>"tooltip", 'data-placement'=>"bottom", 'data-container'=>"body", 'title'=>trans('property.address_help_text')]) }}
+            {{ FormError::block($errors, 'prop_address') }}
+            <!-- <span id="helpBlock" class="help-block">@lang('property.address_help_text')</span> -->
+          </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-8 col-md-offset-4">
+              {{ Form:: button('<i class="fa fa-btn fa-save"></i>' . trans('common.button_save'), ['class'=>'btn btn-primary', 'type'=>'submit']) }}
+            </div>
         </div>
       </div>
   </div>
+{{ Form::close() }}
 @endsection
 
 @section('js')
 <script>
 $(document).ready(function() {
+
+  $('[data-toggle="tooltip"]').tooltip();
 
   nameIndicator();
 

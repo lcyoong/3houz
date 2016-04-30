@@ -14,6 +14,7 @@ return [
     'btn_create_playllist'  => 'Create Playlist',
     'btn_cancel'            => 'Cancel',
     'btn_delete'            => 'Delete',
+    'btn_preview'           => 'Preview',
 
     'search_description'    => 'Start Your Next Journey....',
     'add_to_playlist'       => 'Add to playlist',

@@ -18,6 +18,28 @@ $(document).ready(function () {
         });
     });
 
+    $('html').on('submit', '.ajax-submit', function(event) {
+    	event.preventDefault();
+      var reload = $(this).closest('form').attr('reload');
+      $.ajax({
+          url: $(this).closest('form').attr('action'),
+          type: 'POST',
+          dataType: 'json',
+          data: $(this).serialize(),
+          success: function (data) {
+            if (reload) {
+              setTimeout(function () { location.reload();}, 1000);
+            }
+          },
+          error: function(xhr, status, error) {
+            var err = jQuery.parseJSON(xhr.responseText);
+            $.each(err, function(key, value) {
+              $('#err_msg_' + key).html('<span class="label label-danger">'+value+'</span>');
+            });
+          }
+      });
+    });
+
     $('html').on('click', '.cancel-button', function(event) {
     	event.preventDefault();
     	var goto = $(this).attr('goto');

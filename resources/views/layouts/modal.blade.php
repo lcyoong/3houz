@@ -3,6 +3,7 @@
     <h4 class="modal-title" id="myModalLabel">@if(isset($title)){{$title}}@endif</h4>
 </div>
 <div class="modal-body">
+  @include('partials.messagebag_ajax')
 	<div @if(isset($height)) class="scrollable-y" style="height: {{$height}}px" @endif>
     @yield('content')
     </div>

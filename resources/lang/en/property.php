@@ -13,7 +13,7 @@ return [
     'title_pictures'          => 'Property Pictures',
     'title_listing'           => 'Property Listing',
     'title_my_listing'        => 'My Properties',
-    'unlock'                  => 'Unlock',
+    'unlock'                  => 'Unlock Contact',
     'sign_dof'                => 'Sign Digital Offer Form',
 
     'prop_id'                => 'Id',
@@ -31,9 +31,11 @@ return [
     'prop_type'                  => 'Type',
     'prop_state'                => 'State',
     'prop_address'              => 'Address',
+    'prop_key'                  => 'Offer key',
 
     'address_help_text'         => 'Enter the full address of the property. This will not be dispayed in property listing. Only will be displayed when an offer is made by buyer.',
-    'name_help_text'            => 'Enter the first few letters of the property and the property choices will appear as drop-down.',
+    'name_help_text'            => 'Enter the first few letters of the property and the property lists will appear as drop-down.',
+    'key_help_text'             => 'Enter a 4 to 5 digit key. This key can be sent to a buyer who wants to make an offer via the Digital Offer Form.',
 
     'bedrooms'                  => 'bedrooms',
     'bathrooms'                 => 'bathrooms',

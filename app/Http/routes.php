@@ -28,6 +28,8 @@
 Route::model('user', 'App\User');
 Route::model('property', 'App\Property');
 Route::model('property_picture', 'App\Picture');
+Route::model('property_fav', 'App\PropertyFavourites');
+Route::model('offer_key', 'App\OfferKey');
 
 Route::group(['middleware' => ['web']], function () {
     //
@@ -87,13 +89,22 @@ Route::group(['middleware' => 'web'], function () {
         Route::post('/property/pictures/{property_picture}/delete', 'PropertyPictureController@destroy');
 
         Route::get('/favourites', 'PropertyFavouriteController@listOwn');
+        Route::get('/favourites/{property_fav}/delete', 'PropertyFavouriteController@delete');
+        Route::post('/favourites/delete', 'PropertyFavouriteController@destroy');
+
         Route::post('/property/{property}/add_to_fav', 'PropertyFavouriteController@store');
         Route::post('/property/{property}/remove_fav', 'PropertyFavouriteController@destroy');
         Route::post('/property/{property}/unlock', 'PropertyController@unlock');
 
         Route::get('/property/{property}/sign_offer', 'OfferController@create');
+        Route::get('/property/{property}/offer_key', 'OfferKeyController@createByBuyer');
+        Route::post('/property/{property}/offer_key', 'OfferKeyController@storeByBuyer');
+
         Route::post('/offer/preview', 'OfferController@preview');
         Route::post('/offer/create', 'OfferController@store');
+        Route::get('/offer_key', 'OfferKeyController@index');
+        Route::get('/offer_key/{offer_key}/delete', 'OfferKeyController@delete');
+        Route::post('/offer_key/delete', 'OfferKeyController@destroy');
 
 
     });

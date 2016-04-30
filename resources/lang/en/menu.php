@@ -17,4 +17,6 @@ return [
 	'add_property'							=> 'Add Property',
 	'list_property'							=> 'List Properties',
 	'property_favourites'				=> 'Favourites',
+  'offer_keys'				        => 'Offer Keys',
+  'offers'			     	        => 'Offers',
 ];

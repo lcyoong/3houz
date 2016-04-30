@@ -36,9 +36,20 @@ class PropertyFavouriteController extends Controller
       return $this->favRepo->firstOrCreate($input);
   }
 
+  public function delete(PropertyFavourites $fav)
+  {
+      $this->authorize('update', $fav);
+
+      return view('property_favourite.delete', compact('fav'));
+  }
+
   public function destroy(Request $request)
   {
-      return $this->favRepo->destroy($request->input('fav_id'));
+      // $this->favRepo->findOrFail($request->input('fav_id'));
+
+      $this->favRepo->destroy($request->input('fav_id'));
+
+      return redirect()->back()->with('status', trans('common.save_successful'));
   }
 
   public function isFavourite(Property $property)
@@ -62,6 +73,7 @@ class PropertyFavouriteController extends Controller
       return $this->favRepo->filterOwner($owner)
                                 ->joinMember()
                                 ->joinProperty()
+                                ->joinProject()
                                 ->filter(session()->get($this->parm['search'], []))
                                 ->getPaginated();
   }
