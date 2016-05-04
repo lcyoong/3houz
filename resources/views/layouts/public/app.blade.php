@@ -50,5 +50,6 @@
     @include('includes.ajax_location')
     @yield('js')
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+    <script src="//load.sumome.com/" data-sumo-site-id="7378921d17b5bfb054f6a96749d83b7a19eec8b4a264b3619597efe6bf95866c" async="async"></script>
 </body>
 </html>
