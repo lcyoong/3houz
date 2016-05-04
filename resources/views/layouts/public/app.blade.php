@@ -10,7 +10,7 @@
     <meta property="og:description"        content="{{ $page_desc or config('3houz.desc') }}" />
     <meta property="og:image"              content="{{ $page_img or asset('img/logo-3houz-wp.png') }}" />
 
-    <title>{{ isset($title) ? $title . ' |' : '' }} {{ config('3houz.title') }}</title>
+    <title>{{ $title or config('3houz.title') }}</title>
 
     <!-- Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
