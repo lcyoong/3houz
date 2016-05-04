@@ -25,7 +25,7 @@
 				</td>
 				<td>{{ config('3houz.currency') }}{{ number_format($fav->prop_price) }}</td>
 				<td>
-					<a href="{{ url('/property_detail/'. $fav->prop_id) }}" target=_blank><i class="fa fa-eye"></i></a>
+					<a href="{{ url('/property_detail/'. $fav->prop_id . '/' . ucwords(str_replace(' ', '-', $fav->prj_name . ' ' . $fav->prop_location))) }}" target=_blank><i class="fa fa-eye"></i></a>
 					<a href="{{ url('favourites/'.$fav->fav_id.'/delete') }}" class="btn-modal"><i class="fa fa-trash"></i></a>
 				</td>
 			</tr>
