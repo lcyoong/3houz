@@ -18,41 +18,101 @@ class OfferController extends Controller
 
   public function __construct()
   {
-
+      $this->parm = ['search_path'=>'offer/search', 'search'=>'src_offer'];
   }
 
   public function index()
   {
+    $offer_repo = new  Offer;
+
+    $offers = $offer_repo->filterOwner(auth()->user()->id)
+                              ->orderBy('of_id', 'desc')
+                              ->getPaginated();
+
+    $page_title = trans('offer.title_listing_received');
+
+    return view('offer.list_received', compact('offers', 'page_title') + $this->parm);
+
+  }
+
+  public function listGiven()
+  {
+    $offer_repo = new  Offer;
+
+    $offers = $offer_repo->filterBuyer(auth()->user()->id)
+                              ->orderBy('of_id', 'desc')
+                              ->getPaginated();
+
+    $page_title = trans('offer.title_listing_given');
+
+    return view('offer.list_given', compact('offers', 'page_title') + $this->parm);
 
   }
 
   public function create(Property $property)
   {
-    // Prompt key enter if not found
-    // if (!$this->checkKey($property, auth()->user())) {
-    //   return redirect('property/'.$property->prop_id.'/offer_key');
-    // }
     $key_exists = $this->checkKey($property, auth()->user());
+
+    $existing = Offer::where('of_property', '=', $property->prop_id)->where('of_buyer', '=', auth()->user()->id)->first();
 
     $page_title = trans('offer.title_create');
 
     $owner = $property->owner;
 
-    return view('offer.create', compact('property', 'page_title', 'owner', 'key_exists'));
+    if ($existing) {
+      return view('offer.existing', compact('property', 'page_title', 'owner', 'existing'));
+    } else {
+      return view('offer.create', compact('property', 'page_title', 'owner', 'key_exists'));
+    }
   }
 
-  public function preview(CreateOffer $request)
-  {
-    $offer = $request->input();
-
-    return view('offer.preview', compact('offer'));
-  }
+  // public function preview(CreateOffer $request)
+  // {
+  //   $offer = $request->input();
+  //
+  //   session()->put('new_offer', $offer);
+  //
+  //   return view('offer.preview', compact('offer'));
+  // }
 
   public function store(CreateOffer $request)
   {
-    Offer::create($request->input());
+    $input = $request->except(['_token', 'agree']);
 
-    return redirect('property')->with('status', trans('common.store_successful'));
+    $created = Offer::create($input);
+
+    return redirect('offer')->with('status', trans('common.store_successful'));
+  }
+
+  public function display(Offer $offer)
+  {
+    $property = $offer->property;
+
+    return view('offer.view', compact('offer', 'property'));
+  }
+
+  public function edit(Offer $offer)
+  {
+    $this->authorize('update', $offer);
+
+    $page_title = trans('offer.title_edit');
+
+    $go_back = 'offer';
+
+    $property = $offer->property;
+
+    $dd_status = ['pending'=>'pending'];
+
+    return view('offer.edit', compact('offer', 'property', 'go_back', 'page_title', 'dd_status'));
+  }
+
+  public function update(Request $request)
+  {
+      $input = $request->all();
+
+      $updated = Offer::find(array_get($input, 'of_id'))->update($input);
+
+      return redirect()->back()->with('status', trans('common.save_successful'));
   }
 
   protected function checkKey($property, $buyer)

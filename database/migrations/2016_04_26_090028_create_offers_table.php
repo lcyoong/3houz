@@ -27,6 +27,8 @@ class CreateOffersTable extends Migration
             $table->string('of_owner_ic');
             $table->string('of_owner_tel');
             $table->string('of_status');
+            $table->text('of_special_conditions');
+            $table->text('of_owner_remarks');
             $table->string('of_attachment_path');
             $table->decimal('of_purchase_price', 15, 2)->default(0);
             $table->decimal('of_downpayment_percent', 15, 2)->default(0);

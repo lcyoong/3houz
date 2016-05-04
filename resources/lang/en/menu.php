@@ -19,4 +19,6 @@ return [
 	'property_favourites'				=> 'Favourites',
   'offer_keys'				        => 'Offer Keys',
   'offers'			     	        => 'Offers',
+  'offers_received'           => 'Offers Received',
+  'offers_given'              => 'Offers Given',
 ];

@@ -9,10 +9,11 @@ return [
     |
     */
     'title_create'            => 'Sign Digital Offer Form',
-    'title_edit'              => 'Edit Property',
+    'title_edit'              => 'Edit Offer',
     'title_pictures'          => 'Property Pictures',
     'title_listing'           => 'Property Listing',
-    'title_my_listing'        => 'My Properties',
+    'title_listing_received'  => 'Offers Received',
+    'title_listing_given'     => 'Offers Given',
     'unlock'                  => 'Unlock',
     'sign_dof'                => 'Sign Digital Offer Form',
     'days'                    => 'day(s)',
@@ -20,6 +21,7 @@ return [
     'buyer'                   => 'Buyer',
     'property'                => 'Property',
     'deal'                    => 'Deal',
+    'action'                  => 'Action',
 
     'of_date'                 => "Offer Date",
     'of_property'             => "Property",
@@ -39,6 +41,9 @@ return [
     'of_grace_period'         => "Grace period",
     'of_grace_interest_percent'   => "Interest",
     'of_property_address'     => 'Property Address',
+    'of_special_conditions'   => "Special Conditions",
+    'of_owner_remarks'        => "Owner's Remarks",
 
     'enter_safety_key_text'   => 'Enter the property offer key provided by owner.',
+    'agree'                   => 'I agree to the terms &amp; conditions by submitting this form',
 ];

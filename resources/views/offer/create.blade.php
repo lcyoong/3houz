@@ -5,7 +5,7 @@
 
 @section('page_content')
 @if($key_exists)
-{{ Form::open(['url'=>url('offer/preview'), 'action'=>'post', 'class'=>'']) }}
+{{ Form::open(['url'=>url('offer/create'), 'action'=>'post', 'class'=>'']) }}
 {{ Form::hidden('of_property', $property->prop_id) }}
 {{ Form::hidden('of_owner', $owner->id) }}
 {{ Form::hidden('of_buyer', auth()->user()->id) }}
@@ -88,7 +88,13 @@
 			{{ FormError::block($errors, 'of_paid_within') }}
 		</div>
 		<div class="form-group">
-			{{ Form::button(trans('form.btn_preview'), ['type'=>'submit', 'class'=>'btn btn-primary']) }}
+			<div class="checkbox">
+			<label>{{ Form::checkbox('agree', 1, false) }} {{trans('offer.agree')}}</label>
+			{{ FormError::block($errors, 'agree') }}
+			</div>
+		</div>
+		<div class="form-group">
+			{{ Form::button(trans('form.btn_submit'), ['type'=>'submit', 'class'=>'btn btn-primary']) }}
 		</div>
 	</div>
 </div>

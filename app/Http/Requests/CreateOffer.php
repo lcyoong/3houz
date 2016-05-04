@@ -40,6 +40,7 @@ class CreateOffer extends Request
           'of_purchase_price' => 'required|numeric|min:1',
           'of_downpayment_percent' => 'required|numeric|min:1|max:100',
           'of_paid_within' => 'required|integer|min:1',
+          'agree' => 'required|in:1',
       ];
     }
 }

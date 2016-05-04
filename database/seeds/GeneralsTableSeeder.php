@@ -12,6 +12,16 @@ class GeneralsTableSeeder extends Seeder
     public function run()
     {
       DB::table('generals')->insert([
+        ['gen_group'=>'prop_status', 'gen_code'=>'active', 'gen_value'=>'Active', 'gen_status'=>'active'],
+        ['gen_group'=>'prop_status', 'gen_code'=>'inactive', 'gen_value'=>'Inactive', 'gen_status'=>'active'],
+        ['gen_group'=>'prop_status', 'gen_code'=>'sold', 'gen_value'=>'Sold', 'gen_status'=>'active'],
+
+        ['gen_group'=>'of_status', 'gen_code'=>'pending', 'gen_value'=>'Pendin Ownerg', 'gen_status'=>'active'],
+        ['gen_group'=>'of_status', 'gen_code'=>'accepted', 'gen_value'=>'Owner Accepted', 'gen_status'=>'active'],
+        ['gen_group'=>'of_status', 'gen_code'=>'rejected', 'gen_value'=>'Owner Rejected', 'gen_status'=>'active'],
+        ['gen_group'=>'of_status', 'gen_code'=>'inprocess', 'gen_value'=>'In-process', 'gen_status'=>'active'],
+        ['gen_group'=>'of_status', 'gen_code'=>'processed', 'gen_value'=>'Processed', 'gen_status'=>'active'],
+
         ['gen_group'=>'prop_tenure', 'gen_code'=>'freehold', 'gen_value'=>'Freehold', 'gen_status'=>'active'],
         ['gen_group'=>'prop_tenure', 'gen_code'=>'leasehold', 'gen_value'=>'Leaseshold', 'gen_status'=>'active'],
         ['gen_group'=>'prop_furnish', 'gen_code'=>'full', 'gen_value'=>'Fully Furnished', 'gen_status'=>'active'],

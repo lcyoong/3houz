@@ -17,6 +17,7 @@ class AuthServiceProvider extends ServiceProvider
         \App\Property::class => \App\Policies\PropertyPolicy::class,
         \App\PropertyFavourites::class => \App\Policies\PropertyFavouritePolicy::class,
         \App\OfferKey::class => \App\Policies\OfferKeyPolicy::class,
+        \App\Offer::class => \App\Policies\OfferPolicy::class,
     ];
 
     /**

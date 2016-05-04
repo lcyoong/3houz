@@ -32,6 +32,11 @@ class CreatePropertiesTable extends Migration
             $table->string('prop_reference')->nullable();
             $table->string('prop_key')->nullable();
             $table->char('prop_state', 3);
+            $table->string('prop_status')->nullable();
+            $table->boolean('prop_verified')->default(0);
+            $table->boolean('prop_scam')->default(0);
+            $table->text('prop_internal_remarks');
+            $table->string('prop_spa_path')->nullable();
             $table->integer('prop_created_by')->unsigned();
             $table->integer('prop_view')->unsigned()->default(0);
             $table->timestamps();

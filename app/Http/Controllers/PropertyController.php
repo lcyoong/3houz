@@ -84,9 +84,13 @@ class PropertyController extends Controller
 
         // dd($input);
 
-        $this->propertyRepo->create($input);
+        $created = $this->propertyRepo->create($input);
 
-        return redirect('property')->with('status', trans('common.store_successful'));
+        if (!empty($created->prop_id)) {
+          return redirect('property/'.$created->prop_id.'/images')->with('status', trans('common.save_successful'));
+        } else {
+          return redirect('property')->with('status', trans('common.operation_unsuccessful'));
+        }
     }
 
     public function edit(Property $prop)

@@ -20,6 +20,8 @@ Event::listen('admin.menu.build', function($menu){
 		$menu->add('favourite', trans('menu.property_favourites'), url('favourites'), 3);
 		$menu->add('key', trans('menu.offer_keys'), url('offer_key'), 4);
 		$menu->add('offer', trans('menu.offers'), url('offer'), 5);
+		$menu->add('offer.received', trans('menu.offers_received'), url('offer'), 1);
+		$menu->add('offer.given', trans('menu.offers_given'), url('offer/given'), 2);
 		// $menu->add('fav', 'Favourites', url('fav'), 3);
 		$menu->add('profile', trans('menu.profile'), url('user/edit'), 6);
 	}
