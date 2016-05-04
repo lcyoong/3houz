@@ -49,7 +49,7 @@
                 <label class="control-label sale">
                     {{ $result_item->prop_tenure }}
                 </label>
-                <a href="{{ url('property_detail/' . $result_item->prop_id) }}">
+                <a href="{{ url('property_detail/' . $result_item->prop_id) . '/' . ucwords(str_replace(' ', '-', $result_item->prj_name . ' ' . $result_item->prop_location)) }}">
                     <div class="ct-main-content">
                         <div class="ct-imageBox">
                             @if(!is_null($result_item->pic_thumbnail_path))

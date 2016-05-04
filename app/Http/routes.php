@@ -40,7 +40,7 @@ Route::group(['middleware' => ['web']], function () {
     // Route::post('/search', 'SearchController@search');
     Route::get('/search', 'SearchController@search');
     Route::post('sort-search', 'SearchController@sortSearch');
-    Route::get('/property_detail/{property}', 'SearchController@propertyDetail');
+    Route::get('/property_detail/{property}/{desc}', 'SearchController@propertyDetail');
     Route::get('/property/{property}/owner', 'SearchController@ownerDetail');
     Route::get('login_ajax', 'Auth\AuthController@ajaxLogin');
 });
