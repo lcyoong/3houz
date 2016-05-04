@@ -19,7 +19,7 @@ class Property extends Model
 
     public function scopeJoinMember($query)
     {
-        $query->join('users', 'id', '=', 'prop_owner');
+        $query->addSelect('name', 'tel_no')->join('users', 'id', '=', 'prop_owner');
     }
 
     public function member()

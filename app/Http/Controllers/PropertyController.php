@@ -51,7 +51,7 @@ class PropertyController extends Controller
 
 		protected function listing($owner = null)
     {
-        return $this->propertyRepo->filterOwner($owner)
+        return $this->propertyRepo->select('properties.*')->filterOwner($owner)
 																	->joinMember()
                                   ->joinProject()
 																	->filter(session()->get('src_prop', []))
