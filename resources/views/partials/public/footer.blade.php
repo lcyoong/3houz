@@ -6,7 +6,7 @@
                     <h4 class="text-uppercase ct-u-marginBottom30">About {{ config('3houz.brand') }}</h4>
                     <div class="ct-u-marginBottom30">
                         <span>
-                          3HOUZ is the property marketplace that connects home owners and buyers, directly - on a safe and trusted platform. We will also help to guide you through the legal procedure to safely transact the home purchase.
+                          3HOUZ is the property marketplace that connects home owners and buyers, <u>DIRECTLY</u> - on a safe and trusted platform. We will also help to guide you through the legal procedure to safely transact the home purchase.
                           Say goodbye to expensive commissions!</span>
                     </div>
                 </div>
