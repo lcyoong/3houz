@@ -113,7 +113,7 @@ class Property extends Model
 
     public function scopeWithPicture($query)
     {
-        return $query->leftJoin('picture', 'prop_id', '=', 'pic_proprietor')->groupBy('prop_id');
+        return $query->addSelect('picture.*')->leftJoin('picture', 'prop_id', '=', 'pic_proprietor')->groupBy('prop_id');
     }
 
     public function scopeWithOwner($query)
@@ -128,7 +128,7 @@ class Property extends Model
 
     public function scopeJoinProject($query)
     {
-        return $query->join('projects', 'prop_name', '=', 'prj_id');
+        return $query->addSelect('prj_name')->join('projects', 'prop_name', '=', 'prj_id');
     }
 
     public function isKey($key)

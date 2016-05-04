@@ -18,7 +18,6 @@
         <li><a href="{{ url('/property') }}"><i class="fa fa-home"></i> My Properties</a></li>
       @endif
       <li class="dropdown"><a href="{{ url('/') }}">{{ trans('general.menu_properties') }}</a></li>
-      <li class="dropdown"><a href="{{ url('/faq') }}">{{ trans('general.menu_faqs') }}</a></li>
       <li class="dropdown"><a href="{{ url('/contact') }}">{{ trans('general.menu_contact') }}</a></li>
     </ul>
 </nav>
@@ -77,7 +76,6 @@
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav ct-navbar--fadeInUp navbar-right">
               <li class="dropdown"><a href="{{ url('/') }}"><i class="fa fa-search"></i> {{ trans('general.menu_properties') }}</a></li>
-              <li class="dropdown"><a href="{{ url('/faq') }}">{{ trans('general.menu_faqs') }}</a></li>
               <li class="dropdown"><a href="{{ url('/contact') }}">{{ trans('general.menu_contact') }}</a></li>
             </ul>
             <!-- <a class="btn btn-primary btn-transparent--border ct-u-text--motive" href="submission.html">List Property</a> -->

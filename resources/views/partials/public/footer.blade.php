@@ -5,7 +5,9 @@
                 <div class="col-sm-4 col-md-4 col-lg-4">
                     <h4 class="text-uppercase ct-u-marginBottom30">About {{ config('3houz.brand') }}</h4>
                     <div class="ct-u-marginBottom30">
-                        <span>Estato is new and powerfull real estate theme. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce elementum nulla vel.</span>
+                        <span>
+                          3HOUZ is the property marketplace that connects home owners and buyers, directly - on a safe and trusted platform. We will also help to guide you through the legal procedure to safely transact the home purchase.
+                          Say goodbye to expensive agent fees.</span>
                     </div>
                 </div>
                 <div class="col-sm-4 col-md-4 col-lg-4">
@@ -22,7 +24,7 @@
                     </ul>
                     <ul class="ct-panel--socials ct-panel--navbar list-inline list-unstyled ct-u-marginBottom30">
                         <li><a href="https://www.facebook.com/{{ config('3houz.facebook') }}" target=_blank><div class="ct-socials ct-socials--circle"><i class="fa fa-facebook"></i></div></a></li>
-                        <li><a href="https://twitter.com/{{ config('3houz.facebook') }}" target=_blank><div class="ct-socials ct-socials--circle"><i class="fa fa-twitter"></i></div></a></li>
+                        <!-- <li><a href="https://twitter.com/{{ config('3houz.facebook') }}" target=_blank><div class="ct-socials ct-socials--circle"><i class="fa fa-twitter"></i></div></a></li> -->
                         <li><a href="http://instagram.com/{{ config('3houz.instagram') }}" target=_blank><div class="ct-socials ct-socials--circle"><i class="fa fa-instagram"></i></div></a></li>
                     </ul>
                 </div>
@@ -53,15 +55,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-md-6 col-sm-push-6">
-                    <div class="ct-newsletter text-right">
+                    <!-- <div class="ct-newsletter text-right">
                         <span class="text-uppercase ct-u-text--white ct-fw-600">Join our newsletter</span>
                         <input id="newsletter" placeholder="Your E-mail Address" required type="text" name="field[]" class="form-control input-lg">
                         <button type="submit" class="btn btn-primary btn-transparent--border ct-u-text--motive text-capitalize">Subscribe</button>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="col-sm-6 col-md-6 col-sm-pull-6">
-                    <span class="ct-copyright">&copy; {{ date('Y') }} {{ config('3houz.brand') }}. All rights reserved. We accept:  </span>
-                    <ul class="icons list-unstyled list-inline">
+                    <span class="ct-copyright">&copy; {{ date('Y') }} {{ config('3houz.brand') }}. All rights reserved.</span>
+                    <!-- <ul class="icons list-unstyled list-inline">
                         <li>
                             <i class="fa fa-cc-stripe" data-toggle="tooltip" data-placement="top" title="Stripe"></i>
                         </li>
@@ -80,7 +82,7 @@
                         <li>
                             <i class="fa fa-cc-amex" data-toggle="tooltip" data-placement="top" title="Amex"></i>
                         </li>
-                    </ul>
+                    </ul> -->
                 </div>
             </div>
         </div>

@@ -3,7 +3,7 @@
           <div class="col-sm-6 col-md-12">
               <div class="widget">
                   <div class="widget-inner">
-                    {{ Form::open(['action'=>'get', 'url'=>url('/search'), 'class'=>'ct-formSearch--extended', 'role'=>'form']) }}
+                    {{ Form::open(['method'=>'get', 'url'=>url('/search'), 'class'=>'ct-formSearch--extended', 'role'=>'form']) }}
                         <div class="ct-form--label--type3">
                             <div class="ct-u-displayTableVertical">
                                 <div class="ct-u-displayTableCell">

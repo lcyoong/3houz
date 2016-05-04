@@ -33,7 +33,7 @@ return [
 	'title_search_sidebar'					=> 'Search Property',
 	'contact_owner'									=> 'Contact Owner',
 	'hero_tagline'									=> 'Home Owners Meet Buyers.',
-	'select_any'										=> 'Any',
+	'select_any'										=> '--',
 	'total'													=> 'Total',
 	'pictures'											=> 'Pictures',
 	'go_back_text'									=> 'Go Back',

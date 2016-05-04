@@ -37,7 +37,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/', 'SearchController@index');
     Route::get('/faq', 'PageController@faq');
     Route::get('/contact', 'PageController@contact');
-    Route::post('/search', 'SearchController@search');
+    // Route::post('/search', 'SearchController@search');
     Route::get('/search', 'SearchController@search');
     Route::post('sort-search', 'SearchController@sortSearch');
     Route::get('/property_detail/{property}', 'SearchController@propertyDetail');

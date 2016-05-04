@@ -13,7 +13,7 @@
   <div class="ct-site--map">
     <div class="container">
         <a href="{{ url('/') }}">Home</a>
-        <a href="{{ url('/search') }}">Properties</a>
+        <a href="{{ url('/search?' . $query_str) }}">Properties</a>
         <a href="#">{{ $property->project->prj_name }}</a>
     </div>
   </div>
@@ -35,7 +35,7 @@
                       <a class="btn btn-sm btn-default btn-transparent--border btn-hoverWhite ct-u-text--white" href="http://twitter.com/home?status={{ Request::url() }}" target=_blank><i class="fa fa-twitter"></i></a>
                       <!-- <a href="javascript:window.print()" class="btn btn-sm btn-default btn-transparent--border btn-hoverWhite ct-u-text--white"><i class="fa fa-print"></i></a> -->
                       <div class="ct-buttonBox">
-                          <a href="{{ url('search') }}" class="btn btn-default btn-transparent--border btn-hoverWhite ct-u-text--white">{{ trans('general.back_to_result') }}</a>
+                          <a href="{{ url('search?' . $query_str) }}" class="btn btn-default btn-transparent--border btn-hoverWhite ct-u-text--white">{{ trans('general.back_to_result') }}</a>
                       </div>
                       {{ Form::close() }}
                   </div>

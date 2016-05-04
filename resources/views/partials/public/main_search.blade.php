@@ -1,4 +1,4 @@
-{{ Form::open(['action'=>'post', 'url'=>url('/search')]) }}
+{{ Form::open(['method'=>'get', 'url'=>url('/search')]) }}
 <div class="row">
   <div class="col-md-6">
     <div class="form-group">

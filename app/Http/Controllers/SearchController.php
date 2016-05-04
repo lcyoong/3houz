@@ -47,36 +47,42 @@ class SearchController extends BaseController
 
     public function search(Request $request)
     {
-        if ($request->isMethod('post')) {
-            Session::put('search_cache', $request->all());
-        }
+        // if ($request->isMethod('post')) {
+            Session::put('search_cache', $request->except('_token'));
+        // }
 
         $search_cache = Session::get('search_cache', []);
 
         $sort_by = session()->get('sort_search');
 
-        $result = $this->propRepo->filter($search_cache)->withPicture()->joinProject()->sort($sort_by)->getPaginated();
+        $result = $this->propRepo->select('properties.*')->filter($search_cache)->withPicture()->joinProject()->sort($sort_by)->getPaginated();
 
-        if (array_get($search_cache, 'search_location')) {
-          $title = array_get($search_cache, 'search_location');
-        }
+        $title = implode(', ', array_values(array_filter($search_cache))) . ' ' . config('3houz.title');
 
         return view('public.result', compact('result', 'search_cache', 'title') + $this->parm);
     }
 
     public function propertyDetail(Property $property)
     {
+        $query_str = http_build_query(session()->get('search_cache'));
+
         $pics = $property->pictures;
 
         $property->increment('prop_view');
 
         // $owner = $property->owner;
 
-        $property = $this->propRepo->select('properties.*')->where('prop_id', '=', $property->prop_id)->joinType()->first();
+        $property = $this->propRepo->select('properties.*')->where('prop_id', '=', $property->prop_id)->joinType()->withPicture()->first();
 
-        $title = $property->project->prj_name . ', ' . $property->prop_location;
+        $project = $property->project;
 
-        return view('public.property_detail', compact('property', 'pics', 'title') + $this->parm);
+        $title = $project->prj_name . ', ' . $property->prop_location . ' ' . config('3houz.title');
+
+        $page_desc = $project->prj_name . ', ' . $property->prop_location . ' - ' . $property->prop_description;
+
+        $page_img = url('property-pic/' . $property->pic_path);
+
+        return view('public.property_detail', compact('property', 'pics', 'title', 'page_desc', 'page_img', 'query_str') + $this->parm);
     }
 
     public function ownerDetail(Property $property)

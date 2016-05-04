@@ -1,4 +1,4 @@
-{{ Form::open(['action'=>'get', 'url'=>url('/search'), 'class'=>'ct-searchFormMobile ct-u-marginBottom50', 'role'=>'form']) }}
+{{ Form::open(['method'=>'get', 'url'=>url('/search'), 'class'=>'ct-searchFormMobile ct-u-marginBottom50', 'role'=>'form']) }}
     <div class="form-group ">
         <div class="ct-form--label--type1">
             <div class="ct-u-displayTableVertical">
