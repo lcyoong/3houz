@@ -32,6 +32,7 @@ return [
     'prop_state'                => 'State',
     'prop_address'              => 'Address',
     'prop_key'                  => 'Offer key',
+    'prop_verified'             => 'Verified?',
 
     'address_help_text'         => 'Enter the full address of the property. This will not be dispayed in property listing. Only will be displayed when an offer is made by buyer.',
     'name_help_text'            => 'Enter the first few letters of the property and the property lists will appear as drop-down.',

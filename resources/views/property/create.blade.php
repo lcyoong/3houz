@@ -162,9 +162,7 @@
 @section('js')
 <script>
 $(document).ready(function() {
-
-	$('[data-toggle="tooltip"]').tooltip();
-
+	
 	nameIndicator();
 
 	$('body').on('change', '#prop_name_text', function (event) {

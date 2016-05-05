@@ -32,7 +32,11 @@
 				</td>
 				<td>{{ config('3houz.currency') }}{{ number_format($offer->of_purchase_price) }}</td>
 				<td>{{ number_format($offer->of_downpayment_percent) }}</td>
-				<td>{{ $offer->of_status }}</td>
+				<td>{{ $offer->of_status }}
+					@if(!empty($offer->of_owner_remarks))
+					<a href="#" data-toggle="tooltip" data-placement="top" data-container="body" title="{{ $offer->of_owner_remarks }}"><i class="fa fa-comment-o"></i></a>
+					@endif
+				</td>
 				<td>
 					<a href="{{ url('offer/'.$offer->of_id.'/view') }}" class='btn-modal'><i class="fa fa-eye"></i></a>
 				</td>

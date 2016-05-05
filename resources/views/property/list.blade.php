@@ -9,6 +9,7 @@
 					<th>{{ trans('property.prop_name') }}</th>
 					<th>{{ trans('property.prop_price') }}</th>
 					<th>{{ trans('property.prop_owner') }}</th>
+					<th>{{ trans('property.prop_verified') }}</th>
 					<th>{{ trans('menu.action_column') }}</th>
 				</tr>
 			</thead>
@@ -27,6 +28,7 @@
 				</td>
 				<td>{{ config('3houz.currency') }}{{ number_format($prop->prop_price) }}</td>
 				<td>{{ $prop->name }}</td>
+				<td>{{ trans('general.'.$prop->prop_verified) }}</td>
 				<td>
 					<a href="{{ url('property/'.$prop->prop_id.'/edit') }}"><i class="fa fa-edit"></i></a>
 					<a href="{{ url('property/'.$prop->prop_id.'/images') }}"><i class="fa fa-image"></i></a>
@@ -37,6 +39,7 @@
 			@endforeach
 			</tbody>
 		</table>
+		Total : {{ $props->total() }} record(s)
 		{{ $props->links() }}
 	</div>
 </div>

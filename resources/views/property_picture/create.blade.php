@@ -1,6 +1,7 @@
 @extends('layouts.page')
 
 @section('page_content')
+@include('property.progress')
 <div class="row">
     <div class="col-md-8">
         <div class="panel panel-default">

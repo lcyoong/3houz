@@ -64,7 +64,7 @@ class SearchController extends BaseController
 
     public function propertyDetail(Property $property)
     {
-        $query_str = http_build_query(session()->get('search_cache'));
+        $query_str = http_build_query(session()->get('search_cache', []));
 
         $pics = $property->pictures;
 

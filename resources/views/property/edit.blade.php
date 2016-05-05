@@ -9,6 +9,7 @@
     <li><i class="fa fa-edit"></i> @lang('form.updated_at') {{ $prop->updated_at }}</li>
   </ul>
 </div>
+@include('property.progress')
   <div class="row">
       <div class="col-md-6">
 

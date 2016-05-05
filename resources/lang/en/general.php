@@ -38,6 +38,8 @@ return [
 	'pictures'											=> 'Pictures',
 	'go_back_text'									=> 'Go Back',
 	'back_to_result'								=> 'Back to Results',
+  '1'                             => 'Yes',
+  '0'                             => 'No',
 
 	'message_delete_confirm'				=>	'Are you sure you want to delete?',
 

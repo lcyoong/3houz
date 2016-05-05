@@ -11,6 +11,7 @@ use App\Http\Requests\CreateOffer;
 use App\Property;
 use App\Offer;
 use App\OfferKey;
+use App\General;
 
 class OfferController extends Controller
 {
@@ -101,14 +102,16 @@ class OfferController extends Controller
 
     $property = $offer->property;
 
-    $dd_status = ['pending'=>'pending'];
+    $general = new General;
+
+    $dd_status = $general->outputDropDown('of_status');
 
     return view('offer.edit', compact('offer', 'property', 'go_back', 'page_title', 'dd_status'));
   }
 
   public function update(Request $request)
   {
-      $input = $request->all();
+      $input = $request->only(['of_status', 'of_owner_remarks', 'of_id']);
 
       $updated = Offer::find(array_get($input, 'of_id'))->update($input);
 

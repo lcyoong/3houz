@@ -109,7 +109,10 @@ class PropertyController extends Controller
 
         $type = PropertyType::where('prty_status', '=', 'active')->toDropDown('prty_id', 'prty_description');
 
-        return view('property.edit', compact('page_title', 'go_back', 'prop', 'tenure', 'furnish', 'postcode', 'type'));
+        $progress['pic'] = $prop->pictures->count() > 0 ? true : false;
+        $progress['verify'] = $prop->prop_verified;
+
+        return view('property.edit', compact('page_title', 'go_back', 'prop', 'tenure', 'furnish', 'postcode', 'type', 'progress'));
     }
 
     public function update(EditProperty $request)

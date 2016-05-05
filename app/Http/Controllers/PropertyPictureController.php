@@ -31,7 +31,10 @@ class PropertyPictureController extends Controller
 
         $this->authorize('update', $prop);
 
-        return view('property_picture.create', compact('page_title', 'prop', 'go_back'));
+        $progress['pic'] = $prop->pictures->count() > 0 ? true : false;
+        $progress['verify'] = $prop->prop_verified;
+
+        return view('property_picture.create', compact('page_title', 'prop', 'go_back', 'progress'));
     }
 
     public function store(AddPropertyPicture $request)
