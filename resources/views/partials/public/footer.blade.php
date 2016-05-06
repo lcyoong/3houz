@@ -7,7 +7,7 @@
                     <div class="ct-u-marginBottom30">
                         <span>
                           3HOUZ is the property marketplace that connects home owners and buyers, <u>DIRECTLY</u> - on a safe and trusted platform. We will also help to guide you through the legal procedure to safely transact the home purchase.
-                          Say goodbye to expensive commissions!</span>
+                          </span>
                     </div>
                 </div>
                 <div class="col-sm-4 col-md-4 col-lg-4">
