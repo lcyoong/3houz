@@ -1,7 +1,7 @@
 @extends('layouts.list')
 @section('content_list')
-<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> Offer keys are given to serious buyers who are ready to make you an offer.
-	You can set different offer key for each property. You can also revoke the offer key given to a buyer by deleting the offer key here.
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> Offer keys (OK) are given to serious buyers who are ready to make you an offer.
+	You can set different offer key (OK) for each property. You can also revoke the offer key (OK) given to a buyer by deleting the offer key here.
 </div>
 <div class="row">
 	<div class="col-md-12">

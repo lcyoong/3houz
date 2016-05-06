@@ -490,9 +490,9 @@ function makekenburns($element) {
 
         //Tooltip // -----------------------------------------
 
-        $("[data-toggle='tooltip']").tooltip();
+        // $("[data-toggle='tooltip']").tooltip();
 
-        $("[data-toggle='popover']").popover({trigger: "hover", html: true});
+        // $("[data-toggle='popover']").popover({trigger: "hover", html: true});
 
         //Popup form center // --------------------------------
 

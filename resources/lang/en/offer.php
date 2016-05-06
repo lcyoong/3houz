@@ -44,6 +44,6 @@ return [
     'of_special_conditions'   => "Special Conditions",
     'of_owner_remarks'        => "Owner's Remarks",
 
-    'enter_safety_key_text'   => 'Enter the property offer key provided by owner.',
+    'enter_safety_key_text'   => 'Enter the property offer key (OK) provided by owner.',
     'agree'                   => 'I agree to the terms &amp; conditions by submitting this form',
 ];

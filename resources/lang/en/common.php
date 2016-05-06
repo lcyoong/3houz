@@ -29,7 +29,7 @@ return [
   'operation_unsuccessful'				=> 'Operation failed.',
 
 	'message_delete_confirm'				=> 'Are you sure you want to delete?',
-  'message_delete_confirm_key'    => 'Are you sure you want to delete this offer key for the following buyer?',
+  'message_delete_confirm_key'    => 'Are you sure you want to delete this offer key (OK) for the following buyer?',
 
 
 ];

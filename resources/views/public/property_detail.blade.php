@@ -289,7 +289,7 @@
                                           <ul class="instruction">
                                             <li><span class="label label-info">Step 1</span> Unlock owner's contact.</li>
                                             <li><span class="label label-info">Step 2</span> Contact owner and negotiate the deal.</li>
-                                            <li><span class="label label-info">Step 3</span> When you are ready to make an offer, get the <a href="#"><u>Offer Key</u></a> from the owner to complete the digital offer form (DOF). Our panel lawyer will contact you for the rest of the proceeding.</li>
+                                            <li><span class="label label-info">Step 3</span> When you are ready to make an offer, get the <a href="#" data-toggle="tooltip" data-placement="bottom" data-container="body" title="Offer Key (OK) is a passcode provided by the owner to enable buyer to make an offer on each property."><u>Offer Key (OK)</u></a> from the owner to complete the digital offer form (DOF). Our panel lawyer will contact you for the rest of the proceeding.</li>
                                           </ul>
                                       </div>
                                   </div>

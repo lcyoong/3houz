@@ -8,7 +8,7 @@ return [
     |--------------------------------------------------------------------------
     |
     */
-    'title_listing'             => 'Offer Keys Given',
+    'title_listing'             => 'Offer Keys (OK) Given',
     'ofk_id'                    => 'Id',
 
 ];
