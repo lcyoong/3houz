@@ -37,6 +37,7 @@ return [
     'address_help_text'         => 'Enter the full address of the property. This will not be dispayed in property listing. Only will be displayed when an offer is made by buyer.',
     'name_help_text'            => 'Enter the first few letters of the property and the property lists will appear as drop-down.',
     'key_help_text'             => 'Enter a 4 to 5 digit key. This key can be sent to a buyer who wants to make an offer via the Digital Offer Form.',
+    'project_not_found'         => "*If your property name doesn't appear, please contact us via team@3houz.com.",
 
     'bedrooms'                  => 'bedrooms',
     'bathrooms'                 => 'bathrooms',

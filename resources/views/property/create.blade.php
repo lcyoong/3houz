@@ -34,6 +34,7 @@
 						{{ Form::text('prop_name_text', '', ['class'=>'form-control', 'id'=>'prop_name_text', 'data-toggle'=>"tooltip", 'data-placement'=>"right", 'data-container'=>"body", 'title'=>trans('property.name_help_text')]) }}
 						<span class="input-group-addon"><div id="name_succcess"></div></span>
 					</div>
+					{{ trans('property.project_not_found') }}
 					<!-- <span id="helpBlock" class="help-block">@lang('property.address_help_text')</span> -->
 					{{ Form::hidden('prop_name', '', ['class'=>'form-control', 'id'=>'prop_name']) }}
 					{{ FormError::block($errors, 'prop_name') }}
@@ -162,7 +163,7 @@
 @section('js')
 <script>
 $(document).ready(function() {
-	
+
 	nameIndicator();
 
 	$('body').on('change', '#prop_name_text', function (event) {
