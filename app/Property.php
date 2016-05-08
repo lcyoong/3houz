@@ -113,7 +113,7 @@ class Property extends Model
 
     public function scopeWithPicture($query)
     {
-        return $query->addSelect('picture.*')->leftJoin('picture', 'prop_id', '=', 'pic_proprietor')->groupBy('prop_id');
+        return $query->addSelect('pic_path', 'pic_thumbnail_path', 'pic_description')->leftJoin('picture', 'prop_id', '=', 'pic_proprietor')->groupBy('prop_id');
     }
 
     public function scopeWithOwner($query)
