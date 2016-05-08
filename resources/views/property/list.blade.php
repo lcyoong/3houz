@@ -1,4 +1,9 @@
 @extends('layouts.list')
+
+@section('list_action')
+<a href="{{ url('property/create') }}">{{ Form:: button('<i class="fa fa-btn fa-plus"></i>' . trans('property.title_create'), ['class'=>'btn btn-primary']) }}</a>
+@endsection
+
 @section('content_list')
 <div class="row">
 	<div class="col-md-12">
