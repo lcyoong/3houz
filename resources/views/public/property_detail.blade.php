@@ -68,6 +68,7 @@
           <div class="ct-section--products">
               <div class="row">
                   <div class="col-md-8 col-lg-9">
+                    @if($pics->count() > 0)
                       <div class="ct-gallery ct-u-marginBottom30">
                         <div class="ct-owl-controls--type2" data-single="true" data-pagination="false" data-navigation="false" data-snap-ignore="true" id="sync1">
                           @foreach($pics as $pic)
@@ -82,6 +83,7 @@
                             </div>
                         </div>
                       </div>
+                    @endif
 
                       <div class="row">
                           <div class="col-md-4">
@@ -322,7 +324,7 @@ $(document).ready(function () {
 
   GMaps.geocode({
     @if(strtolower($property->prop_location) == 'city centre')
-    address: "{{ $property->project->prj_name }}, Kuala Lumpur",
+    address: "{{ $property->project->prj_name }}, Kuala Lumpur City Centre",
     @else
     address: "{{ $property->project->prj_name }}, {{ $property->prop_location }}",
     @endif
@@ -337,7 +339,11 @@ $(document).ready(function () {
       }
       if(status=='ZERO_RESULTS'){
         GMaps.geocode({
+          @if(strtolower($property->prop_location) == 'city centre')
+          address: "Kuala Lumpur City Centre",
+          @else
           address: "{{ $property->prop_location }}",
+          @endif
           callback: function(results, status){
             if(status=='OK'){
               var latlng = results[0].geometry.location;

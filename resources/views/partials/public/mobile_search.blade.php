@@ -19,7 +19,6 @@
                 <div class="ct-form--item">
                     <label>{{ trans('property.prop_location') }}</label>
                     {{ Form::text('search_location', array_get($search_cache, 'search_location'), ['class'=>'form-control mobile_ajax_location']) }}
-                    <!-- {{ Form::select('search_location', $postcode, array_get($search_cache, 'search_location'), ['class' => 'select2 ct-select-lg']) }} -->
                 </div>
             </div>
             <div class="ct-u-displayTableCell">

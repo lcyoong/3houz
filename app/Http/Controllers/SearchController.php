@@ -29,7 +29,7 @@ class SearchController extends BaseController
 
         $search_cache = session()->get('search_cache', []);
 
-        $postcode = Postcode::groupBy('post_office')->toDropDown('post_office', 'post_office');
+        // $postcode = Postcode::groupBy('post_office')->toDropDown('post_office', 'post_office');
 
         $type = PropertyType::where('prty_status', '=', 'active')->toDropDown('prty_id', 'prty_description');
 
