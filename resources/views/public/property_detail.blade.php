@@ -321,7 +321,11 @@ $(document).ready(function () {
   });
 
   GMaps.geocode({
+    @if(strtolower($property->prop_location) == 'city centre')
+    address: "{{ $property->project->prj_name }}, Kuala Lumpur",
+    @else
     address: "{{ $property->project->prj_name }}, {{ $property->prop_location }}",
+    @endif
     callback: function(results, status){
       if(status=='OK'){
         var latlng = results[0].geometry.location;
