@@ -112,7 +112,7 @@ class PropertyController extends Controller
         $progress['pic'] = $prop->pictures->count() > 0 ? true : false;
         $progress['verify'] = $prop->prop_verified;
 
-        return view('property.edit', compact('page_title', 'go_back', 'prop', 'tenure', 'furnish', 'postcode', 'type', 'progress'));
+        return view('property.edit', compact('page_title', 'go_back', 'prop', 'tenure', 'furnish', 'type', 'progress'));
     }
 
     public function update(EditProperty $request)

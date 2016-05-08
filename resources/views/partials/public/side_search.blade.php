@@ -26,7 +26,6 @@
                             <div class="ct-form--item ct-u-marginBottom10">
                                 <label>{{ trans('property.prop_location') }}</label>
                                 {{ Form::text('search_location', array_get($search_cache, 'search_location'), ['class'=>'form-control ajax_location']) }}
-                                <!-- {{ Form::select('search_location', $postcode, array_get($search_cache, 'search_location'), ['class' => 'select2 ct-select-lg']) }} -->
                             </div>
                             <div class="ct-form--item ct-u-marginBottom10">
                                 <label>{{ trans('property.prop_type') }}</label>

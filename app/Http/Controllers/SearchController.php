@@ -37,7 +37,7 @@ class SearchController extends BaseController
 
         $sort_search = session()->get('sort_search', []);
 
-        $this->parm = compact('postcode', 'type', 'search_cache', 'dd_sort', 'sort_search');
+        $this->parm = compact('type', 'search_cache', 'dd_sort', 'sort_search');
     }
 
     public function index()
