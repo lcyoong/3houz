@@ -2,7 +2,8 @@
 <div class="row">
   <div class="col-md-6">
     <div class="form-group">
-        {{ Form::text('search_location', '', ['class'=>'form-control ajax_location']) }}
+        {{ Form::text('search_location', '', ['class'=>'form-control ajax_location', 'placeholder'=> trans('general.search_location')]) }}
+        <br/>Note: Currently 3HOUZ is only limited to Klang Valley locations.
     </div>
   </div>
   <div class="col-md-2">
