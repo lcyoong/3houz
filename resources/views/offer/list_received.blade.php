@@ -23,6 +23,7 @@
 				<td>{{ $prop->project->prj_name }}, {{ $prop->prop_location }} <a href="{{ url('property/'.$offer->of_property.'/preview') }}" target=_blank><i class="fa fa-eye"></i></a>
 					<div>
 						<span class="label label-success"><i class="fa fa-home"></i> {{ $prop->prop_address }}</span>
+						<span class="label label-success">{{ config('3houz.currency') }}{{ number_format($prop->prop_price) }}</span>
 					</div>
 				</td>
 				<td>{{ $offer->of_buyer_name }}

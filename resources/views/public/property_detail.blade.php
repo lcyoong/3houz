@@ -69,8 +69,8 @@
               <div class="row">
                   <div class="col-md-8 col-lg-9">
                     @if($pics->count() > 0)
-                      <div class="ct-gallery ct-u-marginBottom30">
-                        <div class="ct-owl-controls--type2" data-single="true" data-pagination="false" data-navigation="false" data-snap-ignore="true" id="sync1">
+                      <div class="ct-gallery ct-u-marginBottom100">
+                        <div class="ct-owl-controls--type2" data-single="true" data-pagination="true" data-snap-ignore="true" id="sync1">
                           @foreach($pics as $pic)
                             <div class="item"><img src="{{ url('property-pic/' . $pic->pic_path) }}"></div>
                           @endforeach

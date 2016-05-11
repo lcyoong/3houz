@@ -8,7 +8,7 @@ return [
     |--------------------------------------------------------------------------
     |
     */
-    'title_create'            => 'New Property',
+    'title_create'            => 'Add Property',
     'title_edit'              => 'Edit Property',
     'title_pictures'          => 'Property Pictures',
     'title_listing'           => 'Property Listing',

@@ -103,6 +103,10 @@
   .navbar-header {
     float: left; } }
 
+@media (max-width: 992px) {
+  .ct-headerText--normal h1, .ct-headerText--normal h2, .ct-headerText--normal h3, .ct-headerText--normal h4, .ct-headerText--normal h5, .ct-headerText--normal h6 {
+    margin-top: 60px; } }
+
 .record-info-bar {
   font-size: 12px;
   padding: 10px 0px;
@@ -129,5 +133,23 @@
 
 .progress-bar a {
   color: #ffffff; }
+
+.ct-footer--extended h1, .ct-footer--extended h2, .ct-footer--extended h3, .ct-footer--extended h4, .ct-footer--extended h5, .ct-footer--extended h6 {
+  color: #000000; }
+
+.form-group {
+  margin-bottom: 15px; }
+
+.ct-headerText--normal span {
+  display: inline-block; }
+
+.ct-gallery {
+  overflow: visible; }
+
+.ct-navigationThumbnail {
+  bottom: -50px; }
+
+.ct-navigationThumbnail .owl-next {
+  border-left: 0px; }
 
 /*# sourceMappingURL=app.css.map */
