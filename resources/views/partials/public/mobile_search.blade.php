@@ -23,6 +23,12 @@
             </div>
             <div class="ct-u-displayTableCell">
                 <div class="ct-form--item">
+                    <label>{{ trans('property.search_project') }}</label>
+                    {{ Form::text('search_project', array_get($search_cache, 'search_project'), ['class'=>'form-control mobile_ajax_project']) }}
+                </div>
+            </div>
+            <div class="ct-u-displayTableCell">
+                <div class="ct-form--item">
                   <label>{{ trans('property.prop_type') }}</label>
                   {{ Form::select('search_type', $type, array_get($search_cache, 'search_type'), ['class' => 'select2 ct-select-lg']) }}
                 </div>

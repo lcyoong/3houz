@@ -19,7 +19,8 @@ return [
 	'menu_properties'								=> 'Search Properties',
 	'menu_contact'									=> 'Contact Us',
 
-	'search_location'								=> 'Location e.g. Ampang, Mont Kiara etc.',
+	'search_location'								=> 'Location e.g. Mont Kiara',
+  'search_project'								=> 'Project e.g. MK11',
 	'search_price_range'						=> 'Price Range',
 	'search_price_from'							=> 'Min $',
 	'search_price_to'								=> 'Max $',

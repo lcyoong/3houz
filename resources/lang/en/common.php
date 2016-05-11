@@ -17,6 +17,7 @@ return [
 	'menu_contact'									=> 'Contact Us',
 
 	'search_location'								=> 'Location',
+  'search_project'								=> 'Project',
 	'search_price_range'						=> 'Price Range',
 	'search_price_from'							=> 'Mix $',
 	'search_price_to'								=> 'Max $',

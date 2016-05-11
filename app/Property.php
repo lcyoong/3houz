@@ -42,6 +42,9 @@ class Property extends Model
         if (array_get($filter, 'search_location')) {
             $query->where('prop_location', '=', $filter['search_location']);
         }
+        if (array_get($filter, 'search_project')) {
+            $query->where('prj_name', 'like', '%' . $filter['search_project'] . '%');
+        }
         if (array_get($filter, 'search_price_range')) {
             $query->whereBetween('prop_price', explode(',', $filter['search_price_range']));
         }

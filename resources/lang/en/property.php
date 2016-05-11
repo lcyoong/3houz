@@ -42,4 +42,5 @@ return [
     'bedrooms'                  => 'bedrooms',
     'bathrooms'                 => 'bathrooms',
     'sqf'                       => 'sqf',
+    'search_project'            => 'Project Name',
 ];

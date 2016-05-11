@@ -152,4 +152,9 @@
 .ct-navigationThumbnail .owl-next {
   border-left: 0px; }
 
+.btn-primary {
+  background-color: #60a7d4;
+  border-color: #60a7d4;
+  color: #ffffff; }
+
 /*# sourceMappingURL=app.css.map */

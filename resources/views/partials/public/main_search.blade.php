@@ -1,6 +1,11 @@
 {{ Form::open(['method'=>'get', 'url'=>url('/search'), 'class'=>'']) }}
 <div class="row">
-<div class="col-md-6">
+  <div class="col-md-3">
+      <div class="form-group">
+        {{ Form::text('search_project', '', ['class'=>'form-control ajax_project', 'placeholder'=> trans('general.search_project')]) }}
+      </div>
+  </div>
+<div class="col-md-3">
     <div class="form-group">
       {{ Form::text('search_location', '', ['class'=>'form-control ajax_location', 'placeholder'=> trans('general.search_location')]) }}
     </div>
@@ -18,7 +23,7 @@
 </div>
 <div class="col-md-2">
     <div class="form-group">
-        {{ Form::button('<i class="fa fa-search"></i> ' . trans('general.button_search'), ['type'=>'submit', 'class'=>'btn btn-primary']) }}
+        {{ Form::button('<i class="fa fa-search"></i> ' . trans('general.button_search'), ['type'=>'submit', 'class'=>'form-control btn btn-primary']) }}
     </div>
 </div>
 </div>
