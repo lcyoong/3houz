@@ -25,11 +25,11 @@
                             </div> -->
                             <div class="ct-form--item ct-u-marginBottom10">
                                 <label>{{ trans('property.prop_location') }}</label>
-                                {{ Form::text('search_location', array_get($search_cache, 'search_location'), ['class'=>'form-control ajax_location']) }}
+                                {{ Form::text('search_location', array_get($search_cache, 'search_location'), ['class'=>'form-control ajax_location', 'placeholder'=> trans('general.search_location')]) }}
                             </div>
                             <div class="ct-form--item ct-u-marginBottom10">
                                 <label>{{ trans('property.search_project') }}</label>
-                                {{ Form::text('search_project', array_get($search_cache, 'search_project'), ['class'=>'form-control ajax_project']) }}
+                                {{ Form::text('search_project', array_get($search_cache, 'search_project'), ['class'=>'form-control ajax_project', 'placeholder'=> trans('general.search_project')]) }}
                             </div>
                             <div class="ct-form--item ct-u-marginBottom10">
                                 <label>{{ trans('property.prop_type') }}</label>

@@ -56,8 +56,6 @@
                           <div class="ct-u-displayTableCell text-left">
                               <i class="fa fa-pencil-square-o"></i><h6>updated on {{ $property->updated_at }}</h6>
                           </div>
-                          <div class="ct-u-displayTableCell text-right">
-                          </div>
                       </div>
                   </div>
                   <div class="col-md-4 col-lg-3 text-right">

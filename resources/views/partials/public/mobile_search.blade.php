@@ -18,13 +18,13 @@
             <div class="ct-u-displayTableCell">
                 <div class="ct-form--item">
                     <label>{{ trans('property.prop_location') }}</label>
-                    {{ Form::text('search_location', array_get($search_cache, 'search_location'), ['class'=>'form-control mobile_ajax_location']) }}
+                    {{ Form::text('search_location', array_get($search_cache, 'search_location'), ['class'=>'form-control mobile_ajax_location', 'placeholder'=> trans('general.search_location')]) }}
                 </div>
             </div>
             <div class="ct-u-displayTableCell">
                 <div class="ct-form--item">
                     <label>{{ trans('property.search_project') }}</label>
-                    {{ Form::text('search_project', array_get($search_cache, 'search_project'), ['class'=>'form-control mobile_ajax_project']) }}
+                    {{ Form::text('search_project', array_get($search_cache, 'search_project'), ['class'=>'form-control mobile_ajax_project', 'placeholder'=> trans('general.search_project')]) }}
                 </div>
             </div>
             <div class="ct-u-displayTableCell">
