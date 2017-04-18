@@ -17,7 +17,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/6.1.5/css/bootstrap-slider.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <!-- <link href="{{ URL::asset('css/style.css')}}" rel="stylesheet"/> -->
-    <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset(elixir('css/app.css')) }}" rel="stylesheet">
     @yield('css')
 
     <style>
