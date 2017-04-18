@@ -166,10 +166,10 @@ $(document).ready(function() {
 
 	nameIndicator();
 
-	$('body').on('change', '#prop_name_text', function (event) {
-      $("#name_succcess").html('<i class="fa fa-times"></i>');
-      $("#prop_name").val('');
-  });
+	// $('body').on('change', '#prop_name_text', function (event) {
+  //     $("#name_succcess").html('<i class="fa fa-times"></i>');
+  //     $("#prop_name").val('');
+  // });
 
 	$( "#prop_name_text" ).autocomplete({
 		minLength: 3,
